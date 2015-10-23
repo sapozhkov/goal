@@ -1,7 +1,9 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Goal */
@@ -14,15 +16,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status_id')->textInput() ?>
+    <?= $form->field($model, 'status_id')->dropDownList(
+        ArrayHelper::map(models\StatusSearch::getAll(), 'id', 'title')
+    ) ?>
 
-    <?= $form->field($model, 'priority_id')->textInput() ?>
+    <?= $form->field($model, 'priority_id')->dropDownList(
+        ArrayHelper::map(models\PrioritySearch::getAll(), 'id', 'title')
+    ) ?>
 
-    <?= $form->field($model, 'type_id')->textInput() ?>
+    <?= $form->field($model, 'type_id')->dropDownList(
+        ArrayHelper::map(models\TypeSearch::getAll(), 'id', 'title')
+    ) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')-> textInput() ?>
 
     <?= $form->field($model, 'to_be_done_at')->textInput() ?>
 

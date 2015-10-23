@@ -5,7 +5,6 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Priority;
 
 /**
  * PrioritySearch represents the model behind the search form about `app\models\Priority`.
@@ -63,5 +62,15 @@ class PrioritySearch extends Priority
         $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
+    }
+
+    /**
+     * Returns sorted array of AR
+     * @return Priority[]
+     */
+    public static function getAll() {
+        return self::find()
+            ->orderBy('weight')
+            ->all();
     }
 }
