@@ -4,6 +4,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Goal */
@@ -30,13 +31,13 @@ use app\models;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'created_at')-> textInput() ?>
+    <?= $form->field($model, 'created_at')->widget(DatePicker::className()) ?>
 
-    <?= $form->field($model, 'to_be_done_at')->textInput() ?>
+    <?= $form->field($model,'to_be_done_at')->widget(DatePicker::className()) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->widget(DatePicker::className()) ?>
 
-    <?= $form->field($model, 'done_at')->textInput() ?>
+    <?= $form->field($model, 'done_at')->widget(DatePicker::className()) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
