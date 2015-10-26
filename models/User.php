@@ -18,8 +18,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     private static function loadUsers() {
         if ( is_null(self::$users) )
             self::$users = require('../config/users.php');
-
-        var_dump(self::$users);
     }
 
     /**
