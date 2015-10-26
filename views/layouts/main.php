@@ -35,18 +35,20 @@ AppAsset::register($this);
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Status', 'url' => ['status/index']],
-            ['label' => 'Type', 'url' => ['type/index']],
-            ['label' => 'Priority', 'url' => ['priority/index']],
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
+        'items' => Yii::$app->user->isGuest ?
+            [
+            ]
+            :
+            [
+                ['label' => 'Status', 'url' => ['status/index']],
+                ['label' => 'Type', 'url' => ['type/index']],
+                ['label' => 'Priority', 'url' => ['priority/index']],
                 [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
-        ],
+            ],
     ]);
     NavBar::end();
     ?>

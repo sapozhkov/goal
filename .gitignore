@@ -28,3 +28,7 @@ phpunit.phar
 /phpunit.xml
 
 config/db.php
+config/users.php
+public_html
+web/.htaccess
+web/cgi-bin/
