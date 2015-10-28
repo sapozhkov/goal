@@ -7,7 +7,12 @@ It just a list of your goals with:
 * date of set
 * date to be done
 * percent of complition
-* log 
 * progress messages
+* log of events
 
 Just an instrument for visual showing your golas with histtory of progress.
+
+Can be used for:
+* planing
+* reviewing your plans
+* nostaging of what was made and what was not
