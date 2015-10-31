@@ -28,8 +28,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'status_id',
-            'priority_id',
+            [
+                'attribute'=>'status_id',
+                'value'=>function(Goal $goal){
+                    return $goal->status->title;
+                },
+                'filter' => \yii\helpers\ArrayHelper::map(
+                    \app\models\Status::find()->orderBy('weight')->asArray()->all(),
+                    'id',
+                    'title'
+                ),
+            ],
+            [
+                'attribute'=>'priority_id',
+                'value'=>function(Goal $goal){
+                    return $goal->priority->title;
+                },
+                'filter' => \yii\helpers\ArrayHelper::map(
+                    \app\models\Priority::find()->orderBy('weight')->asArray()->all(),
+                    'id',
+                    'title'
+                ),
+            ],
             [
                 'attribute'=>'type_id',
                 'value'=>function(Goal $goal){
