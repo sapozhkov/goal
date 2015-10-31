@@ -24,13 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'title',
             [
-                'attribute'=>'status_id',
-                'value'=>function(Goal $goal){
+                'attribute' => 'title',
+                'format' => 'html',
+                'value' => function(Goal $goal){
+                    return Html::a(Html::encode($goal->title), ['goal/view', 'id' => $goal->id] ) ;
+                },
+            ],
+            [
+                'attribute' => 'status_id',
+                'value' => function(Goal $goal){
                     return $goal->status->title;
                 },
                 'filter' => \yii\helpers\ArrayHelper::map(
