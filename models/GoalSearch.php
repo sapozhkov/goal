@@ -43,6 +43,8 @@ class GoalSearch extends Goal
     {
         $query = Goal::find();
 
+        $query->with('type');
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
