@@ -54,9 +54,9 @@ class Goal extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('app', 'Title'),
-            'status_id' => Yii::t('app', 'Status ID'),
-            'priority_id' => Yii::t('app', 'Priority ID'),
-            'type_id' => Yii::t('app', 'Type ID'),
+            'status_id' => Yii::t('app', 'Status'),
+            'priority_id' => Yii::t('app', 'Priority'),
+            'type_id' => Yii::t('app', 'Type'),
             'description' => Yii::t('app', 'Description'),
             'created_at' => Yii::t('app', 'Created At'),
             'to_be_done_at' => Yii::t('app', 'To Be Done At'),

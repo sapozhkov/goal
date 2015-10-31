@@ -30,13 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'status_id',
             'priority_id',
-//            'type_id',
-//            'type.title',
             [
                 'attribute'=>'type_id',
                 'value'=>function(Goal $goal){
                     return $goal->type->title;
-                }
+                },
+                'filter' => \yii\helpers\ArrayHelper::map(
+                    \app\models\Type::find()->orderBy('weight')->asArray()->all(),
+                    'id',
+                    'title'
+                ),
             ],
             // 'description:ntext',
             // 'created_at',
