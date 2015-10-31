@@ -30,9 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'status_id',
-            'priority_id',
-            'type_id',
+            [
+                'attribute' => 'status_id',
+                'value'=>$model->status->title
+            ],
+            [
+                'attribute' => 'priority_id',
+                'value'=>$model->priority->title
+            ],
+            [
+                'attribute' => 'type_id',
+                'value'=>$model->type->title
+            ],
             'description:ntext',
             'created_at',
             'to_be_done_at',
