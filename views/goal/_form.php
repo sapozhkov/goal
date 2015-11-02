@@ -31,6 +31,8 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'done_percent')->dropDownList([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]) ?>
+
     <?= $form->field($model, 'created_at')->widget(DatePicker::className()) ?>
 
     <?= $form->field($model,'to_be_done_at')->widget(DatePicker::className()) ?>

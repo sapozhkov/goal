@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>$model->type->title
             ],
             'description:ntext',
+            'done_percent',
             'created_at',
             'to_be_done_at',
             'updated_at',

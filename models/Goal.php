@@ -39,7 +39,7 @@ class Goal extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'created_at', 'updated_at'], 'required'],
-            [['status_id', 'priority_id', 'type_id'], 'integer'],
+            [['status_id', 'priority_id', 'type_id', 'done_percent'], 'integer'],
             [['description'], 'string'],
             [['created_at', 'to_be_done_at', 'updated_at', 'done_at'], 'safe'],
             [['title'], 'string', 'max' => 256]
