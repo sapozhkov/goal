@@ -24,7 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'id',
+            [
+                'attribute' => 'id',
+                'options' => ['width' => 60]
+            ],
             [
                 'attribute' => 'title',
                 'format' => 'html',
@@ -66,10 +69,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 ),
             ],
             // 'description:ntext',
-            // 'created_at',
-            // 'to_be_done_at',
-            'updated_at:date',
-            // 'done_at',
+            [
+                'attribute' => 'created_at',
+                'format' => 'date',
+                'filter' => ''
+            ],
+            [
+                'attribute' => 'updated_at',
+                'format' => 'date',
+                'filter' => ''
+            ],
+            [
+                'attribute' => 'to_be_done_at',
+                'format' => 'date',
+                'filter' => ''
+            ],
+//            'done_at',
 
         ],
     ]); ?>
