@@ -38,10 +38,10 @@ class Goal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'created_at', 'updated_at'], 'required'],
+            [['title', 'description', 'created_at'], 'required'],
             [['status_id', 'priority_id', 'type_id', 'done_percent'], 'integer'],
             [['description'], 'string'],
-            [['created_at', 'to_be_done_at', 'updated_at', 'done_at'], 'safe'],
+            [['created_at', 'to_be_done_at', 'done_at'], 'safe'],
             [['title'], 'string', 'max' => 256]
         ];
     }
@@ -88,4 +88,15 @@ class Goal extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Status::className(), ['id' => 'status_id']);
     }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->updated_at = date('Y-m-d H:i:s');
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

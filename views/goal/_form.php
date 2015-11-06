@@ -37,8 +37,6 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model,'to_be_done_at')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
-    <?= $form->field($model, 'updated_at')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
-
     <?= $form->field($model, 'done_at')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
     <div class="form-group">

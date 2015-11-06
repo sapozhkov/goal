@@ -39,8 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'done_percent',
             'created_at:date',
             'to_be_done_at:date',
-            'updated_at:date',
             'done_at:date',
+            'updated_at:datetime',
         ],
     ]) ?>
 
