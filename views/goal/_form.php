@@ -31,7 +31,12 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'done_percent')->dropDownList([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]) ?>
+    <?php
+        $aPercent = [];
+        for ( $i=0; $i<=10; $i++ )
+              $aPercent[$i*10] = $i*10;
+    ?>
+    <?= $form->field($model, 'done_percent')->dropDownList($aPercent) ?>
 
     <?= $form->field($model, 'created_at')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
