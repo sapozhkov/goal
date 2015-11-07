@@ -17,10 +17,12 @@ use Yii;
  * @property string $to_be_done_at
  * @property string $updated_at
  * @property string $done_at
+ * @property integer $done_percent
  *
  * @property Type $type
  * @property Priority $priority
  * @property Status $status
+ * @property Log[] $logs
  */
 class Goal extends \yii\db\ActiveRecord
 {
@@ -87,6 +89,14 @@ class Goal extends \yii\db\ActiveRecord
     public function getStatus()
     {
         return $this->hasOne(Status::className(), ['id' => 'status_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLogs()
+    {
+        return $this->hasMany(Log::className(), ['goal_id' => 'id']);
     }
 
     public function beforeSave($insert)
