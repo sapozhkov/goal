@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\GoalForm;
 use Yii;
 use app\models\Goal;
 use app\models\GoalSearch;
@@ -86,10 +87,14 @@ class GoalController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = GoalForm::findOne($id);
+
+        if ( !$model )
+            throw new NotFoundHttpException();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

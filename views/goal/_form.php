@@ -44,6 +44,10 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'done_at')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
+    <hr />
+
+    <?= $form->field($model, 'log_message')->textarea(['rows' => 6]) ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
