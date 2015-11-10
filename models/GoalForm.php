@@ -32,4 +32,15 @@ class GoalForm extends Goal
         );
     }
 
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        $oLog = new Log();
+        $oLog->message = $this->log_message;
+        $oLog->created_at = date('Y-m-d H:i:s');
+//        $oLog->data = json_encode();
+        $oLog->save();
+    }
+
 }
