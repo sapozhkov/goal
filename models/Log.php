@@ -31,9 +31,9 @@ class Log extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['goal_id'], 'integer'],
-            [['created_at', 'data', 'message'], 'required'],
-            [['created_at'], 'safe'],
+            [['id', 'goal_id'], 'integer'],
+            [['goal_id', 'created_at'], 'required'],
+            [['created_at', 'data', 'message'], 'safe'],
             [['data', 'message'], 'string']
         ];
     }

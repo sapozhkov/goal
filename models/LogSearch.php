@@ -7,20 +7,10 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * GoalSearch represents the model behind the search form about `app\models\Goal`.
+ * LogSearch represents the model behind the search form about `app\models\Log`.
  */
-class GoalSearch extends Goal
+class LogSearch extends Log
 {
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['id', 'status_id', 'priority_id', 'type_id'], 'integer'],
-            [['title', 'description', 'created_at', 'to_be_done_at', 'updated_at', 'done_at'], 'safe'],
-        ];
-    }
 
     /**
      * @inheritdoc
@@ -40,9 +30,7 @@ class GoalSearch extends Goal
      */
     public function search($params)
     {
-        $query = Goal::find();
-
-        $query->with('type');
+        $query = Log::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -58,17 +46,8 @@ class GoalSearch extends Goal
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'status_id' => $this->status_id,
-            'priority_id' => $this->priority_id,
-            'type_id' => $this->type_id,
-            'created_at' => $this->created_at,
-            'to_be_done_at' => $this->to_be_done_at,
-            'updated_at' => $this->updated_at,
-            'done_at' => $this->done_at,
+            'goal_id' => $this->goal_id,
         ]);
-
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

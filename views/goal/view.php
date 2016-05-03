@@ -5,6 +5,8 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Goal */
+/* @var $logDataProvider yii\data\ActiveDataProvider */
+/* @var $logModel app\models\Log */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Goals'), 'url' => ['index']];
@@ -43,5 +45,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at:datetime',
         ],
     ]) ?>
+
+    <?= $this->render('log/_form', [
+        'logModel' => $logModel,
+    ]) ?>
+
+    <?= $this->render('log/list', [
+        'logDataProvider' => $logDataProvider,
+    ]) ?>
+
 
 </div>

@@ -5,7 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\Goal;
 use app\models\GoalSearch;
+use app\models\Log;
+use app\models\LogSearch;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -58,8 +61,17 @@ class GoalController extends Controller
      */
     public function actionView($id)
     {
+
+        $logSearchModel = new LogSearch();
+        $logDataProvider = $logSearchModel->search(ArrayHelper::merge(
+            \Yii::$app->request->queryParams,
+            ['goal_id' => $id]
+        ));
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'logDataProvider' => $logDataProvider,
+            'logModel' => new Log
         ]);
     }
 
