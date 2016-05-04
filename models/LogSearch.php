@@ -33,6 +33,8 @@ class LogSearch extends Log
     {
         $query = Log::find();
 
+        $query->orderBy('created_at DESC');
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
