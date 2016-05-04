@@ -43,10 +43,13 @@ class GoalForm extends Goal
 
         $aChanged = [];
         foreach ( $changedAttributes as $sName => $sVal ) {
+            $mNewVal = $this->getAttribute($sName);
+            if ( is_int($sVal) )
+                $mNewVal = (int)$mNewVal;
             if ( $sVal != $this->getAttribute($sName) )
                 $aChanged[$sName] = [
                     $sVal,
-                    $this[$sName]
+                    $mNewVal
                 ];
         }
         if ( isset($aChanged['updated_at']) )
