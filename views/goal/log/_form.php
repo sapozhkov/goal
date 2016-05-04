@@ -11,7 +11,9 @@ use app\models;
 
 <div class="message-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['action' => ['goal/message']]); ?>
+
+    <?= Html::hiddenInput('Log[goal_id]', $logModel->goal_id) ?>
 
     <?= $form->field($logModel, 'message')->textarea() ?>
 

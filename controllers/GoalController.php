@@ -8,6 +8,7 @@ use app\models\Goal;
 use app\models\GoalSearch;
 use app\models\Log;
 use app\models\LogSearch;
+use yii\base\ErrorException;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -72,7 +73,7 @@ class GoalController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
             'logDataProvider' => $logDataProvider,
-            'logModel' => new Log
+            'logModel' => new Log(['goal_id' => $id])
         ]);
     }
 
@@ -115,6 +116,18 @@ class GoalController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionMessage() {
+
+        $model = new Log();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->goal_id]);
+        } else {
+            throw new ErrorException('Cannot add message');
+        }
+
     }
 
     /**

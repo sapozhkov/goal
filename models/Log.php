@@ -32,7 +32,7 @@ class Log extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'goal_id'], 'integer'],
-            [['goal_id', 'created_at'], 'required'],
+            [['goal_id'], 'required'],
             [['created_at', 'data', 'message'], 'safe'],
             [['data', 'message'], 'string']
         ];
@@ -59,4 +59,15 @@ class Log extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Goal::className(), ['id' => 'goal_id']);
     }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->created_at = date('Y-m-d H:i:s');
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
