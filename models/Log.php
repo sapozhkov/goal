@@ -63,7 +63,8 @@ class Log extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            $this->created_at = date('Y-m-d H:i:s');
+            if ( !$this->created_at )
+                $this->created_at = date('Y-m-d H:i:s');
             return true;
         } else {
             return false;
