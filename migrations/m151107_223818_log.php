@@ -20,7 +20,7 @@ class m151107_223818_log extends Migration
 
     public function down()
     {
-        $this->delete('log');
+        $this->dropTable('log');
     }
 
 }
