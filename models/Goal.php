@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "goal".
@@ -107,6 +108,18 @@ class Goal extends \yii\db\ActiveRecord
         } else {
             return false;
         }
+    }
+
+    /*
+     * URL
+     */
+
+    public function url() {
+        return Url::to(['goal/view', 'id' => $this->id]);
+    }
+
+    public function urlLogList() {
+        return Url::to(['log/index', 'sort'=> '-created_at', 'goal_id' => $this->id]);
     }
 
 }

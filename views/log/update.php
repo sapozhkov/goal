@@ -8,8 +8,8 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
     'modelClass' => 'Log',
 ]) . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Logs'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->goal->title, 'url' => $model->goal->url()];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Logs'), 'url' => $model->goal->urlLogList()];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="log-update">

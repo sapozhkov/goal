@@ -9,7 +9,6 @@ use Yii;
 use app\models\Goal;
 use app\models\GoalSearch;
 use app\models\Log;
-use app\models\LogSearch;
 use yii\base\ErrorException;
 use yii\base\UserException;
 use yii\filters\AccessControl;
@@ -67,11 +66,12 @@ class GoalController extends Controller
     public function actionView($id)
     {
 
-        $logSearchModel = new LogSearch();
-        $logDataProvider = $logSearchModel->search(ArrayHelper::merge(
-            \Yii::$app->request->queryParams,
-            ['goal_id' => $id]
-        ));
+        $logRows = Log::find()
+            ->where(['goal_id' => $id])
+            ->orderBy('created_at DESC')
+            ->limit(5)
+            ->all()
+        ;
 
         $taskSearchModel = new TaskSearch();
         $taskDataProvider = $taskSearchModel->search(ArrayHelper::merge(
@@ -81,7 +81,7 @@ class GoalController extends Controller
 
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'logDataProvider' => $logDataProvider,
+            'logRows' => $logRows,
             'taskDataProvider' => $taskDataProvider,
             'logModel' => new Log(['goal_id' => $id])
         ]);

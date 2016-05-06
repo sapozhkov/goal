@@ -1,25 +1,17 @@
 <?php
 
-/* @var $logDataProvider yii\data\ActiveDataProvider */
+/* @var $logRows app\models\Log[] */
+/* @var $goal app\models\Goal */
 
-use app\models\Log;
-use yii\grid\GridView;
+use yii\helpers\Html;
 
-echo GridView::widget([
-    'dataProvider' => $logDataProvider,
-    'columns' => [
-        [
-            'attribute' => 'message',
-            'format' => 'html',
-            'value' => function($log) {
-                /** @var Log $log */
-                return nl2br($log->message);
-            }
-        ],
-        [
-            'attribute' => 'created_at',
-            'format' => 'datetime',
-            'filter' => ''
-        ],
-    ],
-]);
+?>
+
+<p><?= Html::a('Show all log', $goal->urlLogList()); ?></p>
+
+<? foreach ($logRows as $log): ?>
+<p>
+    <strong><?= $log->created_at ?></strong>
+    <?= nl2br($log->message) ?>
+</p>
+<? endforeach; ?>

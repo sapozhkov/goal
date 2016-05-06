@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Goal;
 use Yii;
 use app\models\Log;
 use app\models\LogSearch;
+use yii\base\UserException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -29,46 +31,29 @@ class LogController extends Controller
     /**
      * Lists all Log models.
      * @return mixed
+     * @throws UserException
      */
     public function actionIndex()
     {
-        $searchModel = new LogSearch();
+
+        $goalId = (int)Yii::$app->request->get('goal_id', 0);
+        if ( !$goalId )
+            throw new UserException('Goal id is not provided');
+
+        $goal = Goal::findOne($goalId);
+        if ( !$goal)
+            throw new UserException("Goal [$goalId] not found");
+
+        $searchModel = new LogSearch([
+            'goal_id' => $goalId
+        ]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'goal' => $goal,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }
-
-    /**
-     * Displays a single Log model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new Log model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Log();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
     }
 
     /**
@@ -82,7 +67,7 @@ class LogController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect($model->goal->urlLogList());
         } else {
             return $this->render('update', [
                 'model' => $model,

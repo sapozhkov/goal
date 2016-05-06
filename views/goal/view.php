@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Goal */
-/* @var $logDataProvider yii\data\ActiveDataProvider */
+/* @var $logRows app\models\Log[] */
 /* @var $taskDataProvider yii\data\ActiveDataProvider */
 /* @var $logModel app\models\Log */
 
@@ -57,7 +57,8 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <?= $this->render('log/list', [
-        'logDataProvider' => $logDataProvider,
+        'logRows' => $logRows,
+        'goal' => $model
     ]) ?>
 
 
