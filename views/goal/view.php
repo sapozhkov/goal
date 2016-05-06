@@ -10,7 +10,6 @@ use yii\widgets\DetailView;
 /* @var $logModel app\models\Log */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Goals'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="goal-view">

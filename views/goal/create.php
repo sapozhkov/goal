@@ -7,7 +7,6 @@ use yii\helpers\Html;
 /* @var $model app\models\Goal */
 
 $this->title = Yii::t('app', 'Create Goal');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Goals'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="goal-create">
