@@ -3,12 +3,15 @@
 namespace app\controllers;
 
 use app\models\GoalForm;
+use app\models\Task;
+use app\models\TaskSearch;
 use Yii;
 use app\models\Goal;
 use app\models\GoalSearch;
 use app\models\Log;
 use app\models\LogSearch;
 use yii\base\ErrorException;
+use yii\base\UserException;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -70,11 +73,35 @@ class GoalController extends Controller
             ['goal_id' => $id]
         ));
 
+        $taskSearchModel = new TaskSearch();
+        $taskDataProvider = $taskSearchModel->search(ArrayHelper::merge(
+            \Yii::$app->request->queryParams,
+            ['goal_id' => $id]
+        ));
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'logDataProvider' => $logDataProvider,
+            'taskDataProvider' => $taskDataProvider,
             'logModel' => new Log(['goal_id' => $id])
         ]);
+    }
+
+    public function actionCloseTask() {
+
+        $taskId = (int)Yii::$app->request->get('task_id', 0);
+        if ( !$taskId )
+            throw new UserException('No task id provided');
+
+        $task = Task::findOne($taskId);
+        if ( !$task )
+            throw new UserException("Task [$taskId] not found");
+
+        $task->closed = 1;
+        $task->save();
+
+        $this->redirect(['view', 'id' => $task->goal->id]);
+
     }
 
     /**

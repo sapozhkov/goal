@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Goal */
 /* @var $logDataProvider yii\data\ActiveDataProvider */
+/* @var $taskDataProvider yii\data\ActiveDataProvider */
 /* @var $logModel app\models\Log */
 
 $this->title = $model->title;
@@ -44,6 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'done_at:date',
             'updated_at:datetime',
         ],
+    ]) ?>
+
+    <?= $this->render('task/list', [
+        'taskDataProvider' => $taskDataProvider,
+        'goal' => $model
     ]) ?>
 
     <?= $this->render('log/_form', [

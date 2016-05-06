@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -14,17 +15,22 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model, 'date')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
-    <?= $form->field($model, 'goal_id')->textInput() ?>
+    <?= Html::hiddenInput('Task[goal_id]', $model->goal_id) ?>
 
-    <?= $form->field($model, 'closed')->textInput() ?>
+    <?= $form->field($model, 'closed')->checkbox() ?>
 
-    <?= $form->field($model, 'percent')->textInput() ?>
+    <?php
+    $aPercent = [];
+    for ( $i=0; $i<=10; $i++ )
+        $aPercent[$i*10] = $i*10;
+    ?>
+    <?= $form->field($model, 'percent')->dropDownList($aPercent) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
-    <?= $form->field($model, 'closed_at')->textInput() ?>
+    <?= $form->field($model, 'closed_at')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

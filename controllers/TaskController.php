@@ -2,9 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Goal;
 use Yii;
 use app\models\Task;
-use app\models\TaskSearch;
+use yii\base\UserException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -32,13 +33,7 @@ class TaskController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new TaskSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        $this->redirect('/');
     }
 
     /**
@@ -48,22 +43,32 @@ class TaskController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $this->redirect(['update', 'id' => $id]);
     }
 
     /**
      * Creates a new Task model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
+     * @throws UserException
      */
     public function actionCreate()
     {
-        $model = new Task();
+
+        $goalId = (int)Yii::$app->request->get('goal_id', 0);
+        if ( !$goalId )
+            throw new UserException('Goal id is not provided');
+
+        if ( !Goal::findOne($goalId) )
+            throw new UserException("Goal [$goalId] not found");
+
+        $model = new Task([
+            'goal_id' => $goalId,
+            'created_at' => date('Y-m-d')
+        ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['goal/view', 'id' => $goalId]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +87,7 @@ class TaskController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['goal/view', 'id' => $model->goal->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
