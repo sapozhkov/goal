@@ -83,9 +83,12 @@ class LogController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $log = $this->findModel($id);
 
-        return $this->redirect(['index']);
+        $url = $log->goal->urlLogList();
+        $log->delete();
+
+        return $this->redirect($url);
     }
 
     /**
