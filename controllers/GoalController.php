@@ -9,7 +9,6 @@ use app\models\Goal;
 use app\models\GoalSearch;
 use app\models\Log;
 use yii\base\ErrorException;
-use yii\base\UserException;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -87,23 +86,6 @@ class GoalController extends Controller
             'taskRows' => $taskRows,
             'logModel' => new Log(['goal_id' => $id])
         ]);
-    }
-
-    public function actionCloseTask() {
-
-        $taskId = (int)Yii::$app->request->get('task_id', 0);
-        if ( !$taskId )
-            throw new UserException('No task id provided');
-
-        $task = Task::findOne($taskId);
-        if ( !$task )
-            throw new UserException("Task [$taskId] not found");
-
-        $task->closed = 1;
-        $task->save();
-
-        $this->redirect(['view', 'id' => $task->goal->id]);
-
     }
 
     /**
