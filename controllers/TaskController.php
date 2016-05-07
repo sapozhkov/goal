@@ -43,16 +43,6 @@ class TaskController extends Controller
     }
 
     /**
-     * Displays a single Task model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        $this->redirect(['update', 'id' => $id]);
-    }
-
-    /**
      * Creates a new Task model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -93,7 +83,7 @@ class TaskController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['goal/view', 'id' => $model->goal->id]);
+            return $this->redirect(['task/view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,

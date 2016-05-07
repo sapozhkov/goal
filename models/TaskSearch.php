@@ -42,8 +42,6 @@ class TaskSearch extends Task
     {
         $query = Task::find();
 
-        $query->orderBy('date');
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
