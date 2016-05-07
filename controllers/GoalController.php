@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\models\GoalForm;
 use app\models\Task;
-use app\models\TaskSearch;
 use Yii;
 use app\models\Goal;
 use app\models\GoalSearch;
@@ -12,7 +11,6 @@ use app\models\Log;
 use yii\base\ErrorException;
 use yii\base\UserException;
 use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -73,16 +71,20 @@ class GoalController extends Controller
             ->all()
         ;
 
-        $taskSearchModel = new TaskSearch();
-        $taskDataProvider = $taskSearchModel->search(ArrayHelper::merge(
-            \Yii::$app->request->queryParams,
-            ['goal_id' => $id]
-        ));
+        $taskRows = Task::find()
+            ->where([
+                'goal_id' => $id,
+                'closed' => 0
+            ])
+            ->orderBy('date')
+            ->limit(5)
+            ->all()
+        ;
 
         return $this->render('view', [
             'model' => $this->findModel($id),
             'logRows' => $logRows,
-            'taskDataProvider' => $taskDataProvider,
+            'taskRows' => $taskRows,
             'logModel' => new Log(['goal_id' => $id])
         ]);
     }

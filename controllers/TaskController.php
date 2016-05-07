@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Goal;
+use app\models\TaskSearch;
 use Yii;
 use app\models\Task;
 use yii\base\UserException;
@@ -33,7 +34,12 @@ class TaskController extends Controller
      */
     public function actionIndex()
     {
-        $this->redirect('/');
+        $searchModel = new TaskSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
@@ -107,6 +113,26 @@ class TaskController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    /**
+     * Closes task and return to list interface
+     * @throws UserException
+     */
+    public function actionCloseTask() {
+
+        $taskId = (int)Yii::$app->request->get('task_id', 0);
+        if ( !$taskId )
+            throw new UserException('No task id provided');
+
+        $task = $this->findModel($taskId);
+
+        $task->closed = 1;
+        $task->save();
+
+        $this->redirect(\Yii::$app->request->referrer);
+
+    }
+
 
     /**
      * Finds the Task model based on its primary key value.

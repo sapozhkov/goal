@@ -114,12 +114,28 @@ class Goal extends \yii\db\ActiveRecord
      * URL
      */
 
+    /**
+     * Url to goal/view
+     * @return string
+     */
     public function url() {
         return Url::to(['goal/view', 'id' => $this->id]);
     }
 
+    /**
+     * Url to log list for goal
+     * @return string
+     */
     public function urlLogList() {
         return Url::to(['log/index', 'sort'=> '-created_at', 'goal_id' => $this->id]);
+    }
+
+    /**
+     * Url to task list for goal
+     * @return string
+     */
+    public function urlTaskList() {
+        return Url::to(['task/index', 'sort'=> 'date', 'TaskSearch[goal_id]' => $this->id, 'TaskSearch[closed]' => 0]);
     }
 
 }
