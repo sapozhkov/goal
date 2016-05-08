@@ -31,14 +31,23 @@ class TaskController extends Controller
     /**
      * Lists all Task models.
      * @return mixed
+     * @throws UserException
      */
     public function actionIndex()
     {
         $searchModel = new TaskSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        if ( !$searchModel->goal_id )
+            throw new UserException('Goal id is not provided');
+
+        if ( !$searchModel->goal )
+            throw new UserException("Goal [$searchModel->goal_id] not found");
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'goal' => $searchModel->goal
         ]);
     }
 
@@ -55,7 +64,8 @@ class TaskController extends Controller
         if ( !$goalId )
             throw new UserException('Goal id is not provided');
 
-        if ( !Goal::findOne($goalId) )
+        $goal = Goal::findOne($goalId);
+        if ( !$goal)
             throw new UserException("Goal [$goalId] not found");
 
         $model = new Task([
@@ -64,10 +74,11 @@ class TaskController extends Controller
         ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['goal/view', 'id' => $goalId]);
+            return $this->redirect($model->goal->urlTaskList());
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'goal' => $goal,
             ]);
         }
     }
@@ -83,7 +94,7 @@ class TaskController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['task/view', 'id' => $model->id]);
+            return $this->redirect($model->goal->urlTaskList());
         } else {
             return $this->render('update', [
                 'model' => $model,

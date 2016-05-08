@@ -4,11 +4,15 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
+/* @var $goal app\models\Goal */
 /* @var $model app\models\Task */
 
 $this->title = Yii::t('app', 'Create Task');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Tasks'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
+$this->params['breadcrumbs'][] = ['label' => $goal->title, 'url' => $goal->url()];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Tasks'), 'url' => $goal->urlTaskList()];
+$this->params['breadcrumbs'][] = Yii::t('app', 'Create Task');
+
 ?>
 <div class="task-create">
 
