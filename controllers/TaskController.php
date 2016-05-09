@@ -78,7 +78,6 @@ class TaskController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'goal' => $goal,
             ]);
         }
     }
