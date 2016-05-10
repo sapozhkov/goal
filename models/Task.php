@@ -58,6 +58,29 @@ class Task extends \yii\db\ActiveRecord
         ];
     }
 
+    public function afterSave($insert, $changedAttributes) {
+        parent::afterSave($insert, $changedAttributes);
+
+        // add log record on task creation
+        if ( $insert ) {
+            $log = new Log([
+                'message' => \Yii::t('app', 'Add task "{0}"', [$this->title]),
+                'goal_id' => $this->goal_id
+            ]);
+            $log->save();
+        }
+
+        // add log record on task close
+        elseif ( isset($changedAttributes['closed']) and $this->closed ) {
+            $log = new Log([
+                'message' => \Yii::t('app', 'Close task "{0}"', [$this->title]),
+                'goal_id' => $this->goal_id
+            ]);
+            $log->save();
+        }
+
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
