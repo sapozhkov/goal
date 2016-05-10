@@ -58,6 +58,24 @@ class Task extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // change close date
+            if ( $this->isAttributeChanged('closed', false) and $this->closed )
+                $this->closed_at = date('Y-m-d H:i:s');
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function afterSave($insert, $changedAttributes) {
         parent::afterSave($insert, $changedAttributes);
 
@@ -71,7 +89,7 @@ class Task extends \yii\db\ActiveRecord
         }
 
         // add log record on task close
-        elseif ( isset($changedAttributes['closed']) and $this->closed ) {
+        elseif ( isset($changedAttributes['closed']) and !$changedAttributes['closed'] and $this->closed ) {
             $log = new Log([
                 'message' => \Yii::t('app', 'Close task "{0}"', [$this->title]),
                 'goal_id' => $this->goal_id
