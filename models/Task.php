@@ -88,13 +88,22 @@ class Task extends \yii\db\ActiveRecord
             $log->save();
         }
 
-        // add log record on task close
+        // on task close
         elseif ( isset($changedAttributes['closed']) and !$changedAttributes['closed'] and $this->closed ) {
+
+            // add log record
             $log = new Log([
                 'message' => \Yii::t('app', 'Close task "{0}"', [$this->title]),
                 'goal_id' => $this->goal_id
             ]);
             $log->save();
+
+            // upd percent if needed
+            if ( $this->percent and $this->percent > $this->goal->done_percent ) {
+                $this->goal->done_percent = $this->percent;
+                $this->goal->save();
+            }
+
         }
 
     }
