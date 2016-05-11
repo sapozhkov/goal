@@ -19,6 +19,11 @@ use yii\helpers\Url;
  * @property string $updated_at
  * @property string $done_at
  * @property integer $done_percent
+ * @property string $smart_specific
+ * @property string $smart_measurable
+ * @property string $smart_achievable
+ * @property string $smart_relevant
+ * @property string $smart_time_bound
  *
  * @property Type $type
  * @property Priority $priority
@@ -43,7 +48,7 @@ class Goal extends \yii\db\ActiveRecord
         return [
             [['title', 'description', 'created_at'], 'required'],
             [['status_id', 'priority_id', 'type_id', 'done_percent'], 'integer'],
-            [['description'], 'string'],
+            [['description','smart_specific', 'smart_measurable', 'smart_achievable', 'smart_relevant', 'smart_time_bound'], 'string'],
             [['created_at', 'to_be_done_at', 'done_at'], 'safe'],
             [['title'], 'string', 'max' => 256]
         ];

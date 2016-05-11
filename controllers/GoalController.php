@@ -81,7 +81,7 @@ class GoalController extends Controller
         ;
 
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'goal' => $this->findModel($id),
             'logRows' => $logRows,
             'taskRows' => $taskRows,
             'logModel' => new Log(['goal_id' => $id])

@@ -31,6 +31,12 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'smart_specific')  ->textarea(['rows' => 3]) ?>
+    <?= $form->field($model, 'smart_measurable')->textarea(['rows' => 3]) ?>
+    <?= $form->field($model, 'smart_achievable')->textarea(['rows' => 3]) ?>
+    <?= $form->field($model, 'smart_relevant')  ->textarea(['rows' => 3]) ?>
+    <?= $form->field($model, 'smart_time_bound')->textarea(['rows' => 3]) ?>
+
     <?php
         $aPercent = [];
         for ( $i=0; $i<=10; $i++ )
