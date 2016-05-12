@@ -7,6 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'version' => '0.5',
+    'language' => 'en',
     'defaultRoute' => 'goal/index',
     'components' => [
         'request' => [
@@ -20,6 +21,13 @@ $config = [
             // раскоментить, если надо включить точное определение пути
             //'enableStrictParsing' => true,
         ],
+        'i18n' => array(
+            'translations' => array(
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                ],
+            ),
+        ),
 
         'cache' => [
             'class' => 'yii\caching\FileCache',

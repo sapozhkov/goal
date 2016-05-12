@@ -68,40 +68,40 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
+    <div>
+        <label><?= Yii::t('app', 'Description') ?></label>
+        <p><?= Html::encode($goal->description) ?></p>
+    </div>
+
     <table class="table table-striped table-bordered">
         <tbody>
         <tr>
             <th>S</th>
-            <th><?= Yii::t('app', 'Specific') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'specific_hint')) ?>"><?= Yii::t('smart', 'specific') ?></th>
             <td><?= nl2br(Html::encode($goal->smart_specific)) ?></td>
         </tr>
         <tr>
             <th>M</th>
-            <th><?= Yii::t('app', 'Measurable') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'measurable_hint')) ?>"><?= Yii::t('smart', 'measurable') ?></th>
             <td><?= nl2br(Html::encode($goal->smart_measurable)) ?></td>
         </tr>
         <tr>
             <th>A</th>
-            <th><?= Yii::t('app', 'Achievable') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'achievable_hint')) ?>"><?= Yii::t('smart', 'achievable') ?></th>
             <td><?= nl2br(Html::encode($goal->smart_achievable)) ?></td>
         </tr>
         <tr>
             <th>R</th>
-            <th><?= Yii::t('app', 'Relevant') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'relevant_hint')) ?>"><?= Yii::t('smart', 'relevant') ?></th>
             <td><?= nl2br(Html::encode($goal->smart_relevant)) ?></td>
         </tr>
         <tr>
             <th>T</th>
-            <th><?= Yii::t('app', 'Time Bound') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'time_bound_hint')) ?>"><?= Yii::t('smart', 'time_bound') ?></th>
             <td><?= nl2br(Html::encode($goal->smart_time_bound)) ?></td>
         </tr>
         </tbody>
     </table>
-
-    <div>
-        <label><?= Yii::t('app', 'Description') ?></label>
-        <div><?= Html::encode($goal->description) ?></div>
-    </div>
 
     <?= $this->render('task/list', [
         'taskRows' => $taskRows,
