@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->params['breadcrumbs'][] = ['label' => $goal->title, 'url' => $goal->url()];
-$this->title = Yii::t('app', 'Logs');
+$this->title = Yii::t('log', 'Logs');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

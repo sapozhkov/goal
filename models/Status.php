@@ -42,10 +42,10 @@ class Status extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'weight' => Yii::t('app', 'Weight'),
-            'closed' => Yii::t('app', 'Closed'),
+            'id' => Yii::t('status', 'ID'),
+            'title' => Yii::t('status', 'Title'),
+            'weight' => Yii::t('status', 'Weight'),
+            'closed' => Yii::t('status', 'Closed'),
         ];
     }
 

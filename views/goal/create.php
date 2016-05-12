@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Goal */
 
-$this->title = Yii::t('app', 'Create Goal');
+$this->title = Yii::t('goal', 'Create Goal');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="goal-create">

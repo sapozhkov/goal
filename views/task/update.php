@@ -11,7 +11,7 @@ $this->title = Yii::t('app', 'Update {modelClass}: ', [
 
 $goal = $model->goal;
 $this->params['breadcrumbs'][] = ['label' => $goal->title, 'url' => $goal->url()];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Tasks'), 'url' => $goal->urlTaskList()];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('task', 'Tasks'), 'url' => $goal->urlTaskList()];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 
 ?>

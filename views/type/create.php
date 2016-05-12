@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Type */
 
-$this->title = Yii::t('app', 'Create Type');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Types'), 'url' => ['index']];
+$this->title = Yii::t('type', 'Create Type');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('type', 'Types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="type-create">

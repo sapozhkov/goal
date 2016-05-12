@@ -47,14 +47,14 @@ class Task extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'date' => Yii::t('app', 'Date'),
-            'goal_id' => Yii::t('app', 'Goal ID'),
-            'closed' => Yii::t('app', 'Closed'),
-            'percent' => Yii::t('app', 'Percent'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'closed_at' => Yii::t('app', 'Closed At'),
+            'id' => Yii::t('task', 'ID'),
+            'title' => Yii::t('task', 'Title'),
+            'date' => Yii::t('task', 'Date'),
+            'goal_id' => Yii::t('task', 'Goal ID'),
+            'closed' => Yii::t('task', 'Closed'),
+            'percent' => Yii::t('task', 'Percent'),
+            'created_at' => Yii::t('task', 'Created At'),
+            'closed_at' => Yii::t('task', 'Closed At'),
         ];
     }
 
@@ -82,7 +82,7 @@ class Task extends \yii\db\ActiveRecord
         // add log record on task creation
         if ( $insert ) {
             $log = new Log([
-                'message' => \Yii::t('app', 'Add task "{0}"', [$this->title]),
+                'message' => \Yii::t('task', 'Add task "{0}"', [$this->title]),
                 'goal_id' => $this->goal_id
             ]);
             $log->save();
@@ -93,7 +93,7 @@ class Task extends \yii\db\ActiveRecord
 
             // add log record
             $log = new Log([
-                'message' => \Yii::t('app', 'Close task "{0}"', [$this->title]),
+                'message' => \Yii::t('task', 'Close task "{0}"', [$this->title]),
                 'goal_id' => $this->goal_id
             ]);
             $log->save();

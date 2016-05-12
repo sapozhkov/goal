@@ -23,22 +23,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-6 col-lg-6">
 
             <div>
-                <label><?= Yii::t('app', 'Percent') ?></label>
+                <label><?= Yii::t('goal', 'Percent') ?></label>
                 <?= (int)$goal->done_percent ?> %
             </div>
 
             <div>
-                <label><?= Yii::t('app', 'Status') ?></label>
+                <label><?= Yii::t('goal', 'Status') ?></label>
                 <?= Html::encode($goal->status->title) ?>
             </div>
 
             <div>
-                <label><?= Yii::t('app', 'Priority') ?></label>
+                <label><?= Yii::t('goal', 'Priority') ?></label>
                 <?= Html::encode($goal->priority->title) ?>
             </div>
 
             <div>
-                <label><?= Yii::t('app', 'Type') ?></label>
+                <label><?= Yii::t('goal', 'Type') ?></label>
                 <?= Html::encode($goal->type->title) ?>
             </div>
 
@@ -46,22 +46,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-6 col-lg-6">
 
             <div>
-                <label><?= Yii::t('app', 'Created At') ?></label>
+                <label><?= Yii::t('goal', 'Created At') ?></label>
                 <?= Yii::$app->formatter->asDate($goal->created_at) ?>
             </div>
 
             <div>
-                <label><?= Yii::t('app', 'Updated At') ?></label>
+                <label><?= Yii::t('goal', 'Updated At') ?></label>
                 <?= Yii::$app->formatter->asDatetime($goal->updated_at) ?>
             </div>
 
             <div>
-                <label><?= Yii::t('app', 'To Be Done At') ?></label>
+                <label><?= Yii::t('goal', 'To Be Done At') ?></label>
                 <?= Yii::$app->formatter->asDate($goal->to_be_done_at) ?>
             </div>
 
             <div>
-                <label><?= Yii::t('app', 'Done At') ?></label>
+                <label><?= Yii::t('goal', 'Done At') ?></label>
                 <?= Yii::$app->formatter->asDate($goal->done_at) ?>
             </div>
 
@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div>
-        <label><?= Yii::t('app', 'Description') ?></label>
+        <label><?= Yii::t('goal', 'Description') ?></label>
         <p><?= Html::encode($goal->description) ?></p>
     </div>
 

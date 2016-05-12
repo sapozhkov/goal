@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Type */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Types'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('type', 'Types'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="type-view">

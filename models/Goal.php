@@ -60,16 +60,16 @@ class Goal extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'status_id' => Yii::t('app', 'Status'),
-            'priority_id' => Yii::t('app', 'Priority'),
-            'type_id' => Yii::t('app', 'Type'),
-            'description' => Yii::t('app', 'Description'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'to_be_done_at' => Yii::t('app', 'To Be Done At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'done_at' => Yii::t('app', 'Done At'),
+            'id' => Yii::t('goal', 'ID'),
+            'title' => Yii::t('goal', 'Title'),
+            'status_id' => Yii::t('goal', 'Status'),
+            'priority_id' => Yii::t('goal', 'Priority'),
+            'type_id' => Yii::t('goal', 'Type'),
+            'description' => Yii::t('goal', 'Description'),
+            'created_at' => Yii::t('goal', 'Created At'),
+            'to_be_done_at' => Yii::t('goal', 'To Be Done At'),
+            'updated_at' => Yii::t('goal', 'Updated At'),
+            'done_at' => Yii::t('goal', 'Done At'),
         ];
     }
 

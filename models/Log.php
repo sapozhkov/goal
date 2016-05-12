@@ -44,11 +44,11 @@ class Log extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'goal_id' => Yii::t('app', 'Goal ID'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'data' => Yii::t('app', 'Data'),
-            'message' => Yii::t('app', 'Message'),
+            'id' => Yii::t('log', 'ID'),
+            'goal_id' => Yii::t('log', 'Goal ID'),
+            'created_at' => Yii::t('log', 'Created At'),
+            'data' => Yii::t('log', 'Data'),
+            'message' => Yii::t('log', 'Message'),
         ];
     }
 

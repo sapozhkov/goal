@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PrioritySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Priorities');
+$this->title = Yii::t('priority', 'Priorities');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="priority-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Priority'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('priority', 'Create Priority'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

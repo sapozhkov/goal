@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 
 ?>
 
-<h2><?= Html::a('Log', $goal->urlLogList()); ?></h2>
+<h2><?= Html::a(\Yii::t('log', 'Logs'), $goal->urlLogList()); ?></h2>
 
 <? foreach ($logRows as $log): ?>
 <p>
@@ -26,10 +26,10 @@ use yii\widgets\ActiveForm;
 
     <?= Html::hiddenInput('Log[goal_id]', $logModel->goal_id) ?>
 
-    <?= $form->field($logModel, 'message')->label(\Yii::t('app', 'Write new message'))->textarea() ?>
+    <?= $form->field($logModel, 'message')->label(\Yii::t('goal', 'Write new message'))->textarea() ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Write'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('goal', 'Write'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

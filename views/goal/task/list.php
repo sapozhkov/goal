@@ -9,9 +9,9 @@ use yii\helpers\Html;
 
 ?>
 
-<h2><?= Html::a(Yii::t('app', 'Tasks'), $goal->urlTaskList()); ?></h2>
+<h2><?= Html::a(Yii::t('task', 'Tasks'), $goal->urlTaskList()); ?></h2>
 <p>
-    <?= Html::a(Yii::t('app', 'Create Task'), ['task/create', 'goal_id' => $goal->id], ['class' => 'btn btn-success']) ?>
+    <?= Html::a(Yii::t('task', 'Create Task'), ['task/create', 'goal_id' => $goal->id], ['class' => 'btn btn-success']) ?>
 </p>
 
 <? foreach ($taskRows as $task): ?>
