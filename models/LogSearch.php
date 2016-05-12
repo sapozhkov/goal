@@ -57,11 +57,12 @@ class LogSearch extends Log
         $query->andFilterWhere([
             'id' => $this->id,
             'goal_id' => $this->goal_id,
-            'created_at' => $this->created_at,
         ]);
 
         $query->andFilterWhere(['like', 'data', $this->data])
-            ->andFilterWhere(['like', 'message', $this->message]);
+            ->andFilterWhere(['like', 'message', $this->message])
+            ->andFilterWhere(['like', 'created_at', $this->created_at])
+        ;
 
         return $dataProvider;
     }

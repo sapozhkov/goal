@@ -56,15 +56,15 @@ class TaskSearch extends Task
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'date' => $this->date,
             'goal_id' => $this->goal_id,
             'closed' => $this->closed,
             'percent' => $this->percent,
-            'created_at' => $this->created_at,
-            'closed_at' => $this->closed_at,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
+        $query
+            ->andFilterWhere(['ilike', 'title', $this->title])
+            ->andFilterWhere(['like', 'date', $this->date])
+        ;
 
         return $dataProvider;
     }
