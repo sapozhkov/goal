@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'created_at',
+            'created_at:datetime',
             'message:ntext',
 
             [

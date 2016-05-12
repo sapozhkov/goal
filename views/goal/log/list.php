@@ -13,8 +13,8 @@ use yii\widgets\ActiveForm;
 
 <? foreach ($logRows as $log): ?>
 <p>
-    <strong><?= $log->created_at ?></strong>
-    <?= nl2br(Html::encode($log->message)) ?>
+    <strong><?= Yii::$app->formatter->asDatetime($log->created_at) ?></strong>
+    <?= Yii::$app->formatter->asNtext($log->message) ?>
 </p>
 <? endforeach; ?>
 

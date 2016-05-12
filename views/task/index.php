@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Tasks');
 
             'id',
             'title',
-            'date',
+            'date:date',
             'closed',
             'percent',
             // 'created_at',

@@ -47,22 +47,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div>
                 <label><?= Yii::t('app', 'Created At') ?></label>
-                <?= $goal->created_at ?>
+                <?= Yii::$app->formatter->asDate($goal->created_at) ?>
             </div>
 
             <div>
                 <label><?= Yii::t('app', 'Updated At') ?></label>
-                <?= $goal->updated_at ?>
+                <?= Yii::$app->formatter->asDatetime($goal->updated_at) ?>
             </div>
 
             <div>
                 <label><?= Yii::t('app', 'To Be Done At') ?></label>
-                <?= $goal->to_be_done_at ?: '-' ?>
+                <?= Yii::$app->formatter->asDate($goal->to_be_done_at) ?>
             </div>
 
             <div>
                 <label><?= Yii::t('app', 'Done At') ?></label>
-                <?= $goal->done_at ?: '-' ?>
+                <?= Yii::$app->formatter->asDate($goal->done_at) ?>
             </div>
 
         </div>

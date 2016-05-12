@@ -17,7 +17,7 @@ use yii\helpers\Html;
 <? foreach ($taskRows as $task): ?>
     <p>
         <?= Html::a('Close', ['task/close-task', 'task_id' => $task->id]) ?>
-        <strong><?= $task->date ?></strong>
+        <strong><?= Yii::$app->formatter->asDatetime($task->date) ?></strong>
         <?= nl2br(Html::encode($task->title)) ?>
     </p>
 <? endforeach; ?>
