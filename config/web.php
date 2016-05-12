@@ -2,6 +2,8 @@
 
 $params = require(__DIR__ . '/params.php');
 
+$config_local = require(__DIR__ . '/web-local.php');
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -59,6 +61,8 @@ $config = [
     ],
     'params' => $params,
 ];
+
+$config = \yii\helpers\ArrayHelper::merge($config, $config_local);
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

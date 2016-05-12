@@ -29,6 +29,7 @@ phpunit.phar
 
 config/db.php
 config/users.php
+config/*-local.php
 public_html
 web/.htaccess
 web/cgi-bin/
