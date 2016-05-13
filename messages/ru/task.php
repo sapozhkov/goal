@@ -17,16 +17,16 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Add task "{0}"' => '',
-    'Close task "{0}"' => '',
-    'Closed' => '',
-    'Closed At' => '',
-    'Create Task' => '',
-    'Created At' => '',
-    'Date' => '',
-    'Goal ID' => '',
+    'Add task "{0}"' => 'Добавлена задача "{0}"',
+    'Close task "{0}"' => 'Выполнена задача "{0}"',
+    'Closed' => 'Выполнено',
+    'Closed At' => 'Закрыто',
+    'Create Task' => 'Создать Задачу',
+    'Created At' => 'Создано',
+    'Date' => 'Выполнить к',
+    'Goal ID' => 'ID Цели',
     'ID' => '',
-    'Percent' => '',
-    'Tasks' => '',
-    'Title' => '',
+    'Percent' => 'Процент выполнения',
+    'Tasks' => 'Задачи',
+    'Title' => 'Название',
 ];

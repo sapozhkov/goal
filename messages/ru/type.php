@@ -17,10 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Create Type' => '',
+    'Create Type' => 'Создать Тип',
     'ID' => '',
-    'Title' => '',
-    'Types' => '',
-    'Update' => '',
-    'Weight' => '',
+    'Title' => 'Название',
+    'Types' => 'Типы',
+    'Weight' => 'Вес',
 ];
