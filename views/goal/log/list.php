@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 <? foreach ($logRows as $log): ?>
 <p>
     <strong><?= Yii::$app->formatter->asDatetime($log->created_at) ?></strong>
-    <?= Yii::$app->formatter->asNtext($log->message) ?>
+    <?= Yii::$app->formatter->asWiki($log->message) ?>
 </p>
 <? endforeach; ?>
 

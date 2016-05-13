@@ -30,7 +30,9 @@ $config = [
                 ],
             ),
         ),
-
+        'formatter' => [
+            'class' => 'app\helper\Formatter'
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

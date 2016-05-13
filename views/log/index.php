@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'created_at:datetime',
-            'message:ntext',
+            'message:wiki',
 
             [
                 'class' => 'yii\grid\ActionColumn',

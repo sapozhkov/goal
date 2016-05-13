@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div>
         <label><?= Yii::t('goal', 'Description') ?></label>
-        <p><?= Html::encode($goal->description) ?></p>
+        <p><?= \Yii::$app->formatter->asWiki($goal->description) ?></p>
     </div>
 
     <table class="table table-striped table-bordered">
@@ -78,27 +78,27 @@ $this->params['breadcrumbs'][] = $this->title;
         <tr>
             <th>S</th>
             <th title="<?= Html::encode(Yii::t('smart', 'specific_hint')) ?>"><?= Yii::t('smart', 'specific') ?></th>
-            <td><?= nl2br(Html::encode($goal->smart_specific)) ?></td>
+            <td><?= \Yii::$app->formatter->asWiki($goal->smart_specific) ?></td>
         </tr>
         <tr>
             <th>M</th>
             <th title="<?= Html::encode(Yii::t('smart', 'measurable_hint')) ?>"><?= Yii::t('smart', 'measurable') ?></th>
-            <td><?= nl2br(Html::encode($goal->smart_measurable)) ?></td>
+            <td><?= \Yii::$app->formatter->asWiki($goal->smart_measurable) ?></td>
         </tr>
         <tr>
             <th>A</th>
             <th title="<?= Html::encode(Yii::t('smart', 'achievable_hint')) ?>"><?= Yii::t('smart', 'achievable') ?></th>
-            <td><?= nl2br(Html::encode($goal->smart_achievable)) ?></td>
+            <td><?= \Yii::$app->formatter->asWiki($goal->smart_achievable) ?></td>
         </tr>
         <tr>
             <th>R</th>
             <th title="<?= Html::encode(Yii::t('smart', 'relevant_hint')) ?>"><?= Yii::t('smart', 'relevant') ?></th>
-            <td><?= nl2br(Html::encode($goal->smart_relevant)) ?></td>
+            <td><?= \Yii::$app->formatter->asWiki($goal->smart_relevant) ?></td>
         </tr>
         <tr>
             <th>T</th>
             <th title="<?= Html::encode(Yii::t('smart', 'time_bound_hint')) ?>"><?= Yii::t('smart', 'time_bound') ?></th>
-            <td><?= nl2br(Html::encode($goal->smart_time_bound)) ?></td>
+            <td><?= \Yii::$app->formatter->asWiki($goal->smart_time_bound) ?></td>
         </tr>
         </tbody>
     </table>
