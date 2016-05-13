@@ -18,10 +18,17 @@
  */
 return [
     'Are you sure you want to delete this item?' => '',
+    'Authorization' => '',
     'Create' => '',
     'Delete' => '',
+    'Login' => '',
+    'Logout ({0})' => '',
+    'My Goals' => '',
+    'Password' => '',
+    'Remember Me' => '',
     'Reset' => '',
     'Search' => '',
     'Update' => '',
     'Update {modelClass}: ' => '',
+    'Username' => '',
 ];

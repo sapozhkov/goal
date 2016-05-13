@@ -17,6 +17,13 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Authorization' => 'Авторизация',
+    'Login' => 'Войти',
+    'Logout ({0})' => 'Выйти ({0})',
+    'My Goals' => '',
+    'Password' => 'Пароль',
+    'Remember Me' => 'Запомнить меня',
+    'Username' => 'Имя',
     'Are you sure you want to delete this item?' => 'Вы уверены, что хотите удалить запись?',
     'Create' => 'Создать',
     'Delete' => 'Удалить',

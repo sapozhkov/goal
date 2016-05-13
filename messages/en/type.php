@@ -21,6 +21,5 @@ return [
     'ID' => '',
     'Title' => '',
     'Types' => '',
-    'Update' => '',
     'Weight' => '',
 ];

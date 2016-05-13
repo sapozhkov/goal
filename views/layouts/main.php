@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Goals',
+        'brandLabel' => \Yii::t('app', 'My Goals'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -40,11 +40,11 @@ AppAsset::register($this);
             ]
             :
             [
-                ['label' => 'Status', 'url' => ['status/index']],
-                ['label' => 'Type', 'url' => ['type/index']],
-                ['label' => 'Priority', 'url' => ['priority/index']],
+                ['label' => \Yii::t('status', 'Statuses'), 'url' => ['status/index']],
+                ['label' => \Yii::t('type', 'Types'), 'url' => ['type/index']],
+                ['label' => \Yii::t('priority', 'Priorities'), 'url' => ['priority/index']],
                 [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'label' => \Yii::t('app', 'Logout ({0})', [Yii::$app->user->identity->username]),
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],
