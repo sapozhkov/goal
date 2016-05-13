@@ -62,8 +62,6 @@ $config = [
     'params' => $params,
 ];
 
-$config = \yii\helpers\ArrayHelper::merge($config, $config_local);
-
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
@@ -78,5 +76,7 @@ if (YII_ENV_DEV) {
         'allowedIPs' => ['192.168.0.*'],
     ];
 }
+
+$config = \yii\helpers\ArrayHelper::merge($config, $config_local);
 
 return $config;
