@@ -39,7 +39,6 @@ class GoalForm extends Goal
         $oLog = new Log();
         $oLog->message = $this->log_message;
         $oLog->goal_id = $this->id;
-        $oLog->created_at = date('Y-m-d H:i:s');
 
         $aChanged = [];
         foreach ( $changedAttributes as $sName => $sVal ) {

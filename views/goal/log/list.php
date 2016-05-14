@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
 <? foreach ($logRows as $log): ?>
 <p>
-    <strong><?= Yii::$app->formatter->asDatetime($log->created_at) ?></strong>
+    <strong title="<?= Yii::$app->formatter->asDatetime($log->created_at) ?>"><?= Yii::$app->formatter->asRelativeTime($log->created_at) ?></strong>
     <?= Yii::$app->formatter->asWiki($log->message) ?>
 </p>
 <? endforeach; ?>

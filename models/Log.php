@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "log".
@@ -38,6 +39,21 @@ class Log extends \yii\db\ActiveRecord
         ];
     }
 
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    self::EVENT_BEFORE_INSERT => 'created_at',
+                ],
+                'value' => function () {
+                    return date('c', time() - date('Z'));
+                },
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -58,17 +74,6 @@ class Log extends \yii\db\ActiveRecord
     public function getGoal()
     {
         return $this->hasOne(Goal::className(), ['id' => 'goal_id']);
-    }
-
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if ( !$this->created_at )
-                $this->created_at = date('Y-m-d H:i:s');
-            return true;
-        } else {
-            return false;
-        }
     }
 
 }

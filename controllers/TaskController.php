@@ -70,7 +70,6 @@ class TaskController extends Controller
 
         $model = new Task([
             'goal_id' => $goalId,
-            'created_at' => date('Y-m-d')
         ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

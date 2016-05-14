@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "task".
@@ -34,10 +35,25 @@ class Task extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'created_at'], 'required'],
+            [['title'], 'required'],
             [['date', 'created_at', 'closed_at'], 'safe'],
             [['goal_id', 'closed', 'percent'], 'integer'],
             [['title'], 'string', 'max' => 256]
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    self::EVENT_BEFORE_INSERT => 'created_at',
+                ],
+                'value' => function () {
+                    return date('c', time() - date('Z'));
+                },
+            ],
         ];
     }
 
@@ -66,7 +82,7 @@ class Task extends \yii\db\ActiveRecord
         if (parent::beforeSave($insert)) {
             // change close date
             if ( $this->isAttributeChanged('closed', false) and $this->closed )
-                $this->closed_at = date('Y-m-d H:i:s');
+                $this->closed_at = date('c', time() - date('Z'));
             return true;
         } else {
             return false;
