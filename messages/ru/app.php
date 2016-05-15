@@ -29,6 +29,6 @@ return [
     'Delete' => 'Удалить',
     'Reset' => 'Сбросить',
     'Search' => 'Поиск',
-    'Update' => 'Сохранить',
+    'Update' => 'Редактировать',
     'Update {modelClass}: ' => 'Обновить "{modelClass}": ',
 ];
