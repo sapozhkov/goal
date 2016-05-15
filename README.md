@@ -13,6 +13,6 @@ It just a list of your goals with:
 Just an instrument for visual showing your golas with histtory of progress.
 
 Can be used for:
-* planing
+* planing (SMART avaliable)
 * reviewing your plans
-* nostaging of what was made and what was not
+* nostalging of what was made and what was not
