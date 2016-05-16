@@ -31,6 +31,7 @@ return [
     'Open' => '',
     'Opened' => '',
     'Percent' => '',
+    'Task' => '',
     'Tasks' => '',
     'Title' => '',
 ];

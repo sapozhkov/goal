@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Task */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Task',
+    'modelClass' => Yii::t('task', 'Task'),
 ]) . ' ' . $model->title;
 
 $goal = $model->goal;

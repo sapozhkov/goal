@@ -17,10 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'All' => 'Все',
     'ID' => '',
-    'Opened' => 'Открыто',
+    'Task' => 'Задача',
     'Add task "{0}"' => 'Добавлена задача "{0}"',
+    'All' => 'Все',
     'Close' => 'Закрыть',
     'Close task "{0}"' => 'Выполнена задача "{0}"',
     'Closed' => 'Выполнено',
@@ -30,6 +30,7 @@ return [
     'Date' => 'Выполнить к',
     'Goal ID' => 'ID Цели',
     'Open' => 'Открыть',
+    'Opened' => 'Открыто',
     'Percent' => 'Процент выполнения',
     'Tasks' => 'Задачи',
     'Title' => 'Название',
