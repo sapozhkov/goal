@@ -99,7 +99,10 @@ use yii\jui\DatePicker;
         ->textarea(['rows' => 3]) ?>
 
     <? if ( !$model->isNewRecord ): ?>
-    <?= $form->field($model, 'log_message')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'log_message')
+            ->label(Yii::t('goal', 'Write new message'))
+            ->textarea(['rows' => 6])
+    ?>
     <? endif; ?>
 
     <div class="form-group">

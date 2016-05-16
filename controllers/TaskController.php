@@ -132,6 +132,24 @@ class TaskController extends Controller
 
     }
 
+    /**
+     * Open task and return to list interface
+     * @throws UserException
+     */
+    public function actionOpenTask() {
+
+        $taskId = (int)Yii::$app->request->get('task_id', 0);
+        if ( !$taskId )
+            throw new UserException('No task id provided');
+
+        $task = $this->findModel($taskId);
+
+        $task->closed = 0;
+        $task->save();
+
+        $this->redirect(\Yii::$app->request->referrer);
+
+    }
 
     /**
      * Finds the Task model based on its primary key value.

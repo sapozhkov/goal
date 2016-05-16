@@ -30,21 +30,34 @@ $this->params['breadcrumbs'][] = Yii::t('task', 'Tasks');
             'id',
             'title',
             'date:date',
-            'closed',
             'percent',
+            [
+                'attribute' => 'closed',
+                'format' => 'html',
+                'value' => function (Task $model) {
+                    return $model->closed ?
+                        Html::a(
+                            '<span class="glyphicon glyphicon-ok"></span>',
+                            ['task/open-task', 'task_id' => $model->id],
+                            ['title' => Yii::t('task', 'Close')]
+                        )
+                        :
+                        Html::a(
+                            '<span class="glyphicon glyphicon-unchecked"></span>',
+                            ['task/close-task', 'task_id' => $model->id],
+                            ['title' => Yii::t('task', 'Open')]
+                        )
+                    ;
+                },
+                'filter' => [
+                    '' => Yii::t('task', 'All'),
+                    0 => Yii::t('task', 'Opened'),
+                    1 => Yii::t('task', 'Closed'),
+                ],
+            ],
+
             // 'created_at',
             // 'closed_at',
-
-            [
-                'class' => yii\grid\ActionColumn::className(),
-                'template' => '{close}',
-                'buttons' => [
-                    'close' => function ($url, $model, $key) {
-                        /** @var Task $model */
-                        return $model->closed ? '' : Html::a('Close', ['close-task', 'task_id' => $model->id]);
-                    }
-                ]
-            ],
 
             [
                 'class' => 'yii\grid\ActionColumn',

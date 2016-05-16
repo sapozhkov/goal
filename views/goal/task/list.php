@@ -16,7 +16,10 @@ use yii\helpers\Html;
 
 <? foreach ($taskRows as $task): ?>
     <p>
-        <?= Html::a('Close', ['task/close-task', 'task_id' => $task->id]) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-unchecked"></span>',
+            ['task/close-task', 'task_id' => $task->id],
+            ['title' => Yii::t('task', 'Close')])
+        ?>
         <strong><?= Yii::$app->formatter->asDatetime($task->date) ?></strong>
         <?= nl2br(Html::encode($task->title)) ?>
     </p>
