@@ -18,7 +18,6 @@
  */
 return [
     'Add task "{0}"' => '',
-    'All' => '',
     'Close' => '',
     'Close task "{0}"' => '',
     'Closed' => '',

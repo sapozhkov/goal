@@ -50,7 +50,6 @@ $this->params['breadcrumbs'][] = Yii::t('task', 'Tasks');
                     ;
                 },
                 'filter' => [
-                    '' => Yii::t('task', 'All'),
                     0 => Yii::t('task', 'Opened'),
                     1 => Yii::t('task', 'Closed'),
                 ],
