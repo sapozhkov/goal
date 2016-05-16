@@ -60,7 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <div>
                 <label><?= Yii::t('goal', 'To Be Done At') ?></label>
                 <?= Yii::$app->formatter->asDate($goal->to_be_done_at) ?>
-                (<?= Yii::$app->formatter->asRelativeTime($goal->to_be_done_at) ?>)
+                <? if ($goal->to_be_done_at): ?>
+                    (<?= Yii::$app->formatter->asRelativeTime($goal->to_be_done_at) ?>)
+                <? endif; ?>
             </div>
 
             <? if ($goal->done_at): ?>
