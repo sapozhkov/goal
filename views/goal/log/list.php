@@ -1,5 +1,6 @@
 <?php
 
+/* @var $this yii\web\View */
 /* @var $logRows app\models\Log[] */
 /* @var $goal app\models\Goal */
 /* @var $logModel app\models\Log */
@@ -12,10 +13,9 @@ use yii\widgets\ActiveForm;
 <h2><?= Html::a(\Yii::t('log', 'Logs'), $goal->urlLogList()); ?></h2>
 
 <? foreach ($logRows as $log): ?>
-<p>
-    <strong title="<?= Yii::$app->formatter->asDatetime($log->created_at) ?>"><?= Yii::$app->formatter->asRelativeTime($log->created_at) ?></strong>
-    <?= Yii::$app->formatter->asWiki($log->message) ?>
-</p>
+<?= $this->render('/log/log_data', [
+    'log' => $log
+]) ?>
 <? endforeach; ?>
 
 <hr>

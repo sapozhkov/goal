@@ -8,6 +8,7 @@ use app\models\Log;
 use app\models\LogSearch;
 use yii\base\UserException;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -89,6 +90,46 @@ class LogController extends Controller
         $log->delete();
 
         return $this->redirect($url);
+    }
+
+    /**
+     * Show difference for field in selected log
+     * @param int $id
+     * @param string $field
+     * @return string
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
+     */
+    public function actionDiff($id, $field) {
+
+        $id = (int)$id;
+        $log = Log::findOne($id);
+        
+        if ( !$log )
+            throw new NotFoundHttpException("Not found log [$id]");
+        
+        $data = json_decode($log->data, true);
+
+        if ( !in_array($field, [
+            'description',
+            'smart_specific',
+            'smart_measurable',
+            'smart_achievable',
+            'smart_relevant',
+            'smart_time_bound'
+        ]))
+            throw new ForbiddenHttpException("Not allowed field");
+        
+        if ( !$data or !isset($data[$field]) )
+            throw new NotFoundHttpException("No changes for field");
+
+        return $this->render('diff', [
+            'log' => $log,
+            'field' => $field,
+            'old' => $data[$field][0],
+            'new' => $data[$field][1],
+        ]);
+
     }
 
     /**
