@@ -13,14 +13,26 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('log', 'Logs'), 'url' => $lo
 $this->params['breadcrumbs'][] = ['label' => $log->id, 'url' => ['log/update', 'id' => $log->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Diff');
 
+\app\assets\DiffAsset::register($this);
+
+$a = explode("\n", $old);
+$b = explode("\n", $new);
+
+// Options for generating the diff
+$options = array(
+    'ignoreWhitespace' => true,
+    //'ignoreCase' => true,
+);
+// Initialize the diff class
+$diff = new Diff($a, $b, $options);
+
+$renderer = new Diff_Renderer_Html_Inline;
+$text =  $diff->render($renderer);
+
 ?>
 
 <h1><?= $this->title ?>:</h1>
 
-<h2><?= \Yii::t('log', 'Old value') ?>:</h2>
-<?= \Yii::$app->formatter->asWiki($old) ?>
-
-<h2><?= \Yii::t('log', 'New value') ?>:</h2>
-<?= \Yii::$app->formatter->asWiki($new) ?>
+<?= $text ?>
 
 
