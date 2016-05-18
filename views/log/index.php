@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Log;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -22,7 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'created_at:datetime',
-            'message:wiki',
+            [
+                'attribute'=>'message',
+                'format'=>'html',
+                'value'=>function(Log $log){
+                    return $this->render('/log/log_data', ['log' => $log]);
+                },
+                //'filter' => '',
+            ],
 
             [
                 'class' => 'yii\grid\ActionColumn',
