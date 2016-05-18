@@ -17,8 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'ID' => '',
-    'Task' => 'Задача',
     'Add task "{0}"' => 'Добавлена задача "{0}"',
     'Close' => 'Закрыть',
     'Close task "{0}"' => 'Выполнена задача "{0}"',
@@ -28,9 +26,11 @@ return [
     'Created At' => 'Создано',
     'Date' => 'Выполнить к',
     'Goal ID' => 'ID Цели',
+    'ID' => '',
     'Open' => 'Открыть',
     'Opened' => 'Открыто',
     'Percent' => 'Процент выполнения',
+    'Task' => 'Задача',
     'Tasks' => 'Задачи',
     'Title' => 'Название',
 ];

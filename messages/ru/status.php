@@ -17,10 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'ID' => '',
-    'Status' => 'Статус',
     'Closed' => 'Выполнено',
     'Create Status' => 'Создать Статус',
+    'ID' => '',
+    'Status' => 'Статус',
     'Statuses' => 'Статусы',
     'Title' => 'Название',
     'Weight' => 'Вес',

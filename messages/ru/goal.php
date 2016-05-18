@@ -17,15 +17,20 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'ID' => '',
     'Create Goal' => 'Создать Цель',
     'Created At' => 'Создано',
     'Description' => 'Описание',
     'Done At' => 'Выполнено',
     'Goal' => 'Цель',
     'Goals' => 'Цели',
+    'ID' => '',
     'Percent' => 'Процент выполнения',
     'Priority' => 'Приоритет',
+    'Smart Achievable' => 'Достижимый',
+    'Smart Measurable' => 'Измеримый',
+    'Smart Relevant' => 'Актуальный ',
+    'Smart Specific' => 'Конкретный',
+    'Smart Time Bound' => 'Ограниченный во времени',
     'Status' => 'Статус',
     'Title' => 'Название',
     'To Be Done At' => 'Выполнить к',
@@ -33,9 +38,4 @@ return [
     'Updated At' => 'Обновлено',
     'Write' => 'Напиать',
     'Write new message' => 'Написать новое сообщение',
-    'Smart Specific'   => 'Конкретный',
-    'Smart Measurable' => 'Измеримый',
-    'Smart Achievable' => 'Достижимый',
-    'Smart Relevant'   => 'Актуальный ',
-    'Smart Time Bound' => 'Ограниченный во времени',
 ];

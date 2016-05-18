@@ -17,10 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'ID' => '',
-    'Priority' => 'Приоритет',
     'Create Priority' => 'Создать приоритет',
+    'ID' => '',
     'Priorities' => 'Приоритеты',
+    'Priority' => 'Приоритет',
     'Title' => 'Название',
     'Weight' => 'Вес',
 ];
