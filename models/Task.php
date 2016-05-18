@@ -98,7 +98,12 @@ class Task extends \yii\db\ActiveRecord
         // add log record on task creation
         if ( $insert ) {
             $log = new Log([
-                'message' => \Yii::t('task', 'Add task "{0}"', [$this->title]),
+                'data' => json_encode([
+                    'add_task' => [
+                        'id' => $this->id,
+                        'title' => $this->title
+                    ]
+                ]),
                 'goal_id' => $this->goal_id
             ]);
             $log->save();
@@ -109,7 +114,12 @@ class Task extends \yii\db\ActiveRecord
 
             // add log record
             $log = new Log([
-                'message' => \Yii::t('task', 'Close task "{0}"', [$this->title]),
+                'data' => json_encode([
+                    'close_task' => [
+                        'id' => $this->id,
+                        'title' => $this->title
+                    ]
+                ]),
                 'goal_id' => $this->goal_id
             ]);
             $log->save();

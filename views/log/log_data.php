@@ -19,7 +19,7 @@ $notFound = '{not found}';
 
 <?php
 
-$data = json_decode($log->data);
+$data = json_decode($log->data, true);
 
 $rows = [];
 
@@ -86,6 +86,25 @@ if ( $data ) {
                         \Yii::t('log', 'updated'),
                         Html::a('diff', ['log/diff', 'id' => $log->id, 'field' => $fieldName])
                     );
+                    break;
+
+            }
+
+        }
+
+        // если не явлвется атрибутом
+        else {
+
+            switch ($fieldName) {
+
+                case 'add_task':
+                    $rows[] = \Yii::t('task', 'Add task "{0}"',
+                        [Html::a($fieldData['title'], ['task/update', 'id' => $fieldData['id']])]);
+                    break;
+
+                case 'close_task':
+                    $rows[] = \Yii::t('task', 'Close task "{0}"',
+                        [Html::a($fieldData['title'], ['task/update', 'id' => $fieldData['id']])]);
                     break;
 
             }
