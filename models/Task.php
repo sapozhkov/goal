@@ -115,8 +115,8 @@ class Task extends \yii\db\ActiveRecord
             $log->save();
 
             // upd percent if needed
-            if ( $this->percent and $this->percent > $this->goal->done_percent ) {
-                $this->goal->done_percent = $this->percent;
+            if ( $this->percent and $this->percent > $this->goal->percent ) {
+                $this->goal->percent = $this->percent;
                 $this->goal->save();
             }
 

@@ -58,13 +58,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 ),
             ],
             [
-                'attribute'=>'done_percent',
+                'attribute'=>'percent',
                 'format'=>'html',
                 'value'=>function(Goal $goal){
                     return
                         '<div class="progress">
-                            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: '.$goal->done_percent.'%;">
-                            '.$goal->done_percent.'%
+                            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: '.$goal->percent.'%;">
+                            '.$goal->percent.'%
                           </div>
                         </div>';
                 },

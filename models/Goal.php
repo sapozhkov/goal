@@ -19,7 +19,7 @@ use yii\helpers\Url;
  * @property string $to_be_done_at
  * @property string $updated_at
  * @property string $done_at
- * @property integer $done_percent
+ * @property integer $percent
  * @property string $smart_specific
  * @property string $smart_measurable
  * @property string $smart_achievable
@@ -48,7 +48,7 @@ class Goal extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['status_id', 'priority_id', 'type_id', 'done_percent'], 'integer'],
+            [['status_id', 'priority_id', 'type_id', 'percent'], 'integer'],
             [['description','smart_specific', 'smart_measurable', 'smart_achievable', 'smart_relevant', 'smart_time_bound'], 'string'],
             [['created_at', 'to_be_done_at', 'done_at'], 'safe'],
             [['title'], 'string', 'max' => 256]
@@ -88,6 +88,7 @@ class Goal extends \yii\db\ActiveRecord
             'to_be_done_at' => Yii::t('goal', 'To Be Done At'),
             'updated_at' => Yii::t('goal', 'Updated At'),
             'done_at' => Yii::t('goal', 'Done At'),
+            'percent' => Yii::t('goal', 'Percent'),
             'smart_specific'   => Yii::t('smart', 'specific'),
             'smart_measurable' => Yii::t('smart', 'measurable'),
             'smart_achievable' => Yii::t('smart', 'achievable'),
