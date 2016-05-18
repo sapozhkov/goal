@@ -89,11 +89,11 @@ class Goal extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('goal', 'Updated At'),
             'done_at' => Yii::t('goal', 'Done At'),
             'percent' => Yii::t('goal', 'Percent'),
-            'smart_specific'   => Yii::t('smart', 'specific'),
-            'smart_measurable' => Yii::t('smart', 'measurable'),
-            'smart_achievable' => Yii::t('smart', 'achievable'),
-            'smart_relevant'   => Yii::t('smart', 'relevant'),
-            'smart_time_bound' => Yii::t('smart', 'time_bound'),
+            'smart_specific'   => Yii::t('goal', 'Smart Specific'),
+            'smart_measurable' => Yii::t('goal', 'Smart Measurable'),
+            'smart_achievable' => Yii::t('goal', 'Smart Achievable'),
+            'smart_relevant'   => Yii::t('goal', 'Smart Relevant'),
+            'smart_time_bound' => Yii::t('goal', 'Smart Time Bound'),
         ];
     }
 

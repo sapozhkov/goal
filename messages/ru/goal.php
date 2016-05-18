@@ -33,4 +33,9 @@ return [
     'Updated At' => 'Обновлено',
     'Write' => 'Напиать',
     'Write new message' => 'Написать новое сообщение',
+    'Smart Specific'   => 'Конкретный',
+    'Smart Measurable' => 'Измеримый',
+    'Smart Achievable' => 'Достижимый',
+    'Smart Relevant'   => 'Актуальный ',
+    'Smart Time Bound' => 'Ограниченный во времени',
 ];

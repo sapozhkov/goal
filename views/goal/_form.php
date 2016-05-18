@@ -75,27 +75,27 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'smart_specific')
         ->hint(nl2br(Html::encode(\Yii::t('smart', 'specific_hint'))))
-        ->label('[SMART] '. \Yii::t('smart', 'specific'))
+        ->label('[SMART] '. \Yii::t('goal', 'Smart Specific'))
         ->textarea(['rows' => 3]) ?>
 
     <?= $form->field($model, 'smart_measurable')
         ->hint(nl2br(Html::encode(\Yii::t('smart', 'measurable_hint'))))
-        ->label('[SMART] '. \Yii::t('smart', 'measurable'))
+        ->label('[SMART] '. \Yii::t('goal', 'Smart Measurable'))
         ->textarea(['rows' => 3]) ?>
 
     <?= $form->field($model, 'smart_achievable')
         ->hint(nl2br(Html::encode(\Yii::t('smart', 'achievable_hint'))))
-        ->label('[SMART] '. \Yii::t('smart', 'achievable'))
+        ->label('[SMART] '. \Yii::t('goal', 'Smart Achievable'))
         ->textarea(['rows' => 3]) ?>
 
     <?= $form->field($model, 'smart_relevant')
         ->hint(nl2br(Html::encode(\Yii::t('smart', 'relevant_hint'))))
-        ->label('[SMART] '. \Yii::t('smart', 'relevant'))
+        ->label('[SMART] '. \Yii::t('goal', 'Smart Relevant'))
         ->textarea(['rows' => 3]) ?>
 
     <?= $form->field($model, 'smart_time_bound')
         ->hint(nl2br(Html::encode(\Yii::t('smart', 'time_bound_hint'))))
-        ->label('[SMART] '. \Yii::t('smart', 'time_bound'))
+        ->label('[SMART] '. \Yii::t('goal', 'Smart Time Bound'))
         ->textarea(['rows' => 3]) ?>
 
     <? if ( !$model->isNewRecord ): ?>

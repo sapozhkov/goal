@@ -88,27 +88,27 @@ $this->params['breadcrumbs'][] = $this->title;
         <tbody>
         <tr>
             <th>S</th>
-            <th title="<?= Html::encode(Yii::t('smart', 'specific_hint')) ?>"><?= Yii::t('smart', 'specific') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'specific_hint')) ?>"><?= Yii::t('goal', 'Smart Specific') ?></th>
             <td><?= \Yii::$app->formatter->asWiki($goal->smart_specific) ?></td>
         </tr>
         <tr>
             <th>M</th>
-            <th title="<?= Html::encode(Yii::t('smart', 'measurable_hint')) ?>"><?= Yii::t('smart', 'measurable') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'measurable_hint')) ?>"><?= Yii::t('goal', 'Smart Measurable') ?></th>
             <td><?= \Yii::$app->formatter->asWiki($goal->smart_measurable) ?></td>
         </tr>
         <tr>
             <th>A</th>
-            <th title="<?= Html::encode(Yii::t('smart', 'achievable_hint')) ?>"><?= Yii::t('smart', 'achievable') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'achievable_hint')) ?>"><?= Yii::t('goal', 'Smart Achievable') ?></th>
             <td><?= \Yii::$app->formatter->asWiki($goal->smart_achievable) ?></td>
         </tr>
         <tr>
             <th>R</th>
-            <th title="<?= Html::encode(Yii::t('smart', 'relevant_hint')) ?>"><?= Yii::t('smart', 'relevant') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'relevant_hint')) ?>"><?= Yii::t('goal', 'Smart Relevant') ?></th>
             <td><?= \Yii::$app->formatter->asWiki($goal->smart_relevant) ?></td>
         </tr>
         <tr>
             <th>T</th>
-            <th title="<?= Html::encode(Yii::t('smart', 'time_bound_hint')) ?>"><?= Yii::t('smart', 'time_bound') ?></th>
+            <th title="<?= Html::encode(Yii::t('smart', 'time_bound_hint')) ?>"><?= Yii::t('goal', 'Smart Time Bound') ?></th>
             <td><?= \Yii::$app->formatter->asWiki($goal->smart_time_bound) ?></td>
         </tr>
         </tbody>

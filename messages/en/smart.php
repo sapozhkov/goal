@@ -6,12 +6,6 @@
  */
 
 return [
-    'specific'   => 'Specific',
-    'measurable' => 'Measurable',
-    'achievable' => 'Achievable',
-    'relevant'   => 'Relevant',
-    'time_bound' => 'Time Bound',
-
     'specific_hint' => 'The criterion stresses the need for a specific goal rather than a more general one. This means the goal is clear and unambiguous; without vagaries and platitudes. To make goals specific, they must tell a team exactly what\'s expected, why it\'s important, who’s involved, where it\'s going to happen and which attributes are important.
 
 A specific goal will usually answer the five \'W\' questions:

@@ -33,4 +33,9 @@ return [
     'Updated At' => '',
     'Write' => '',
     'Write new message' => '',
+    'Smart Specific'   => 'Specific',
+    'Smart Measurable' => 'Measurable',
+    'Smart Achievable' => 'Achievable',
+    'Smart Relevant'   => 'Relevant',
+    'Smart Time Bound' => 'Time Bound',
 ];
