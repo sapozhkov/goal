@@ -23,8 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-6 col-lg-6">
 
             <div>
-                <label><?= Yii::t('goal', 'Percent') ?></label>
-                <?= (int)$goal->done_percent ?> %
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= (int)$goal->done_percent ?>%;">
+                        <?= (int)$goal->done_percent ?>%
+                    </div>
+                </div>
             </div>
 
             <div>
