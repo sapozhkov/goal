@@ -81,9 +81,8 @@ if ( $data ) {
                 case 'smart_relevant':
                 case 'smart_time_bound':
                     $rows[] = sprintf(
-                        '<strong>%s</strong> %s (%s)',
-                        $fieldLabel,
-                        \Yii::t('log', 'updated'),
+                        '%s (%s)',
+                        \Yii::t('log', 'Field "{0}" updated', ['<strong>'.$fieldLabel.'</strong>']),
                         Html::a('diff', ['log/diff', 'id' => $log->id, 'field' => $fieldName])
                     );
                     break;

@@ -19,10 +19,12 @@
 return [
     'Created At' => '',
     'Data' => '',
+    'Field "{0}" updated' => '',
     'Goal ID' => '',
     'ID' => '',
     'Logs' => '',
     'Message' => '',
+    'New value' => '',
+    'Old value' => '',
     'Preview' => '',
-    'updated' => '',
 ];
