@@ -32,4 +32,5 @@ return [
     'Update' => 'Редактировать',
     'Update {modelClass}: ' => 'Обновить "{modelClass}": ',
     'Username' => 'Имя',
+    'today' => 'сегодня',
 ];

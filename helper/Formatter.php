@@ -27,5 +27,13 @@ class Formatter extends \yii\i18n\Formatter{
             $this->wikiParser = new yii2wikiparser();
         return $this->wikiParser->parse($text);
     }
+
+    public function asRelativeTime($value, $referenceTime = null)
+    {
+        if ( $value === date('Y-m-d') )
+            return \Yii::t('app', 'today');
+        else
+            return parent::asRelativeTime($value, $referenceTime);
+    }
     
 }

@@ -32,4 +32,5 @@ return [
     'Update' => '',
     'Update {modelClass}: ' => '',
     'Username' => '',
+    'today' => '',
 ];
