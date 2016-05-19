@@ -32,6 +32,7 @@ if ( $data ) {
 
             switch ( $fieldName ) {
 
+                case 'percent':
                 case 'title':
                     $rows[] = sprintf(
                         '<strong>%s</strong>: "%s" -> "%s"',

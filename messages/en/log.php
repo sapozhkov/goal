@@ -24,7 +24,5 @@ return [
     'ID' => '',
     'Logs' => '',
     'Message' => '',
-    'New value' => '',
-    'Old value' => '',
     'Preview' => '',
 ];
