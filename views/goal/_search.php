@@ -50,7 +50,7 @@ use yii\widgets\ActiveForm;
 
     // Sorting
     echo $form->field($model, 'sort')->dropDownList([
-        '-title' => '-title',
+        '' => '',
         'id' => 'id',
         '-id' => '-id',
     ]);
