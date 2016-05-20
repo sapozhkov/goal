@@ -1,5 +1,9 @@
 <?php
 
+use app\models\Priority;
+use app\models\Status;
+use app\models\Type;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -10,30 +14,48 @@ use yii\widgets\ActiveForm;
 
 <div class="goal-search">
 
-    <?php $form = ActiveForm::begin([
+    <?php
+
+    $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-    ]); ?>
+    ]);
 
-    <?= $form->field($model, 'id') ?>
+    // title
+    echo $form->field($model, 'title');
 
-    <?= $form->field($model, 'title') ?>
+    // status
+    $statusList = ArrayHelper::map(
+        Status::find()->orderBy('weight')->asArray()->all(),
+        'id',
+        'title'
+    );
+    echo $form->field($model, 'status_id')->dropDownList([''=>''] + $statusList);
 
-    <?= $form->field($model, 'status_id') ?>
+    // Priority
+    $priorityList = ArrayHelper::map(
+        Priority::find()->orderBy('weight')->asArray()->all(),
+        'id',
+        'title'
+    );
+    echo $form->field($model, 'priority_id')->dropDownList([''=>''] + $priorityList);
 
-    <?= $form->field($model, 'priority_id') ?>
+    // Type
+    $typeList = ArrayHelper::map(
+        Type::find()->orderBy('weight')->asArray()->all(),
+        'id',
+        'title'
+    );
+    echo $form->field($model, 'type_id')->dropDownList([''=>''] + $typeList);
 
-    <?= $form->field($model, 'type_id') ?>
+    // Sorting
+    echo $form->field($model, 'sort')->dropDownList([
+        '-title' => '-title',
+        'id' => 'id',
+        '-id' => '-id',
+    ]);
 
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'to_be_done_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <?php // echo $form->field($model, 'done_at') ?>
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

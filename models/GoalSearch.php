@@ -11,6 +11,15 @@ use yii\data\ActiveDataProvider;
  */
 class GoalSearch extends Goal
 {
+
+    /** @var string Sort field */
+    public $sort;
+
+    public function init() {
+        parent::init();
+        $this->load(\Yii::$app->request->get());
+    }
+
     /**
      * @inheritdoc
      */
@@ -18,6 +27,7 @@ class GoalSearch extends Goal
     {
         return [
             [['id', 'status_id', 'priority_id', 'type_id'], 'integer'],
+            [['sort'], 'string'],
             [['title', 'description', 'created_at', 'to_be_done_at', 'updated_at', 'done_at'], 'safe'],
         ];
     }
@@ -29,6 +39,16 @@ class GoalSearch extends Goal
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return parent::attributeLabels()+[
+            'sort' => Yii::t('app', 'Sort By'),
+        ];
     }
 
     /**
@@ -46,6 +66,9 @@ class GoalSearch extends Goal
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'params' => ['sort' => $this->sort]
+            ]
         ]);
 
         $this->load($params);
