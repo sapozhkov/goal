@@ -14,48 +14,61 @@ use yii\widgets\ActiveForm;
 
 <div class="goal-search">
 
-    <?php
-
-    $form = ActiveForm::begin([
+    <? $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-    ]);
+    ]) ?>
 
-    // title
-    echo $form->field($model, 'title');
+    <div class="row">
+        <div class="col-sm-4">
+            <?= $form->field($model, 'title') ?>
+        </div>
 
-    // status
-    $statusList = ArrayHelper::map(
-        Status::find()->orderBy('weight')->asArray()->all(),
-        'id',
-        'title'
-    );
-    echo $form->field($model, 'status_id')->dropDownList([''=>''] + $statusList);
+        <div class="col-sm-4">
+        <?
+            $statusList = ArrayHelper::map(
+                Status::find()->orderBy('weight')->asArray()->all(),
+                'id',
+                'title'
+            );
+            echo $form->field($model, 'status_id')->dropDownList([''=>''] + $statusList);
+        ?>
+        </div>
 
-    // Priority
-    $priorityList = ArrayHelper::map(
-        Priority::find()->orderBy('weight')->asArray()->all(),
-        'id',
-        'title'
-    );
-    echo $form->field($model, 'priority_id')->dropDownList([''=>''] + $priorityList);
+        <div class="col-sm-4">
+        <?
+            $priorityList = ArrayHelper::map(
+                Priority::find()->orderBy('weight')->asArray()->all(),
+                'id',
+                'title'
+            );
+            echo $form->field($model, 'priority_id')->dropDownList([''=>''] + $priorityList);
+        ?>
+        </div>
+    </div>
 
-    // Type
-    $typeList = ArrayHelper::map(
-        Type::find()->orderBy('weight')->asArray()->all(),
-        'id',
-        'title'
-    );
-    echo $form->field($model, 'type_id')->dropDownList([''=>''] + $typeList);
+    <div class="row">
+        <div class="col-sm-4">
+        <?
+            $typeList = ArrayHelper::map(
+                Type::find()->orderBy('weight')->asArray()->all(),
+                'id',
+                'title'
+            );
+            echo $form->field($model, 'type_id')->dropDownList([''=>''] + $typeList);
+        ?>
+        </div>
 
-    // Sorting
-    echo $form->field($model, 'sort')->dropDownList([
-        '' => '',
-        'id' => 'id',
-        '-id' => '-id',
-    ]);
+        <div class="col-sm-4">
+        <?= $form->field($model, 'sort')->dropDownList([
+                '' => '',
+                'id' => 'id',
+                '-id' => '-id',
+            ])
+        ?>
+        </div>
 
-    ?>
+    </div>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
