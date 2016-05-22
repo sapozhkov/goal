@@ -3,6 +3,7 @@
 use app\models\Goal;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\GoalSearch */
@@ -101,5 +102,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
         ],
     ]); ?>
+
+    <div class="list-group">
+    <?= ListView::widget([
+        'dataProvider' => $dataProvider,
+        'itemOptions' => ['class' => 'list-group-item'],
+        'itemView' =>
+            function ($goal, $key, $index, $widget) {
+                return $this->render('list-item', [
+                    'goal' => $goal,
+                ]);
+            },
+    ]) ?>
+    </div>
 
 </div>
