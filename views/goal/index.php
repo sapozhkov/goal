@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div>
-        <?= Html::a(Yii::t('goal', 'Create Goal'), ['create'], ['class' => 'btn btn-success']) ?>
-        <div data-toggle="collapse" data-target="#filter" class="btn  btn-default"><?= \Yii::t('app', 'Filter') ?></div>
+        <?= Html::a('<span class="glyphicon glyphicon-plus-sign"></span> '.Yii::t('goal', 'Create Goal'), ['create'], ['class' => 'btn btn-success']) ?>
+        <div data-toggle="collapse" data-target="#filter" class="btn  btn-default"><span class="glyphicon glyphicon-filter"></span> <?= \Yii::t('app', 'Filter') ?></div>
     </div>
 
     <div id="filter" class="collapse <?= $searchModel->isUsed() ? 'in' : '' ?>">
