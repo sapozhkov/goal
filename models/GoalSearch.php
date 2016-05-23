@@ -95,4 +95,12 @@ class GoalSearch extends Goal
 
         return $dataProvider;
     }
+
+    /**
+     * Return true if one of filter fields is used
+     * @return bool
+     */
+    public function isUsed() {
+        return $this->title or $this->status_id or $this->priority_id or $this->type_id or $this->sort;
+    }
 }
