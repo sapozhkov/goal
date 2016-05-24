@@ -16,7 +16,7 @@ use yii\jui\DatePicker;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
-        <div class="col-xs-6 col-lg-6">
+        <div class="col-sm-6">
 
             <div>
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
@@ -42,7 +42,7 @@ use yii\jui\DatePicker;
 
         </div>
 
-        <div class="col-xs-6 col-lg-6">
+        <div class="col-sm-6">
             <div>
                 <?php
                 $aPercent = [];
