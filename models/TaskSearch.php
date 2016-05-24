@@ -58,14 +58,21 @@ class TaskSearch extends Task
             'id' => $this->id,
             'goal_id' => $this->goal_id,
             'closed' => $this->closed,
-            'percent' => $this->percent,
         ]);
 
         $query
-            ->andFilterWhere(['ilike', 'title', $this->title])
-            ->andFilterWhere(['like', 'date', $this->date])
+            ->andFilterWhere(['like', 'title', $this->title])
         ;
 
         return $dataProvider;
     }
+
+    /**
+     * Return true if one of filter fields is used
+     * @return bool
+     */
+    public function isUsed() {
+        return $this->title or $this->closed!=='0';
+    }
+
 }

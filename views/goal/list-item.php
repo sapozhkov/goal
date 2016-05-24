@@ -9,7 +9,7 @@ use yii\helpers\Url;
 ?>
 
 <a href="<?= Url::to(['view', 'id' => $goal->id])?>" class="list-group-item">
-    <h4 class="list-group-item-heading"><?= Html::encode($goal->title) ?></h4>
+    <h4 class="list-group-item-heading goal-list-item-heading"><?= Html::encode($goal->title) ?></h4>
     <div class="list-group-item-text">
 
         <nobr>

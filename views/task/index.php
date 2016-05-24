@@ -1,8 +1,7 @@
 <?php
 
-use app\models\Task;
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $goal app\models\Goal*/
@@ -17,52 +16,29 @@ $this->params['breadcrumbs'][] = Yii::t('task', 'Tasks');
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+    <div>
         <?= Html::a(Yii::t('task', 'Create Task'), ['task/create', 'goal_id' => $goal->id], ['class' => 'btn btn-success']) ?>
-    </p>
+        <div data-toggle="collapse" data-target="#filter" class="btn  btn-default"><span class="glyphicon glyphicon-filter"></span> <?= \Yii::t('app', 'Filter') ?></div>
+    </div>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <div id="filter" class="collapse <?= $searchModel->isUsed() ? 'in' : '' ?>">
+        <?= $this->render('_search', ['model' => $searchModel]); ?>
+    </div>
 
-            'id',
-            'title',
-            'date:date',
-            'percent',
-            [
-                'attribute' => 'closed',
-                'format' => 'html',
-                'value' => function (Task $model) {
-                    return $model->closed ?
-                        Html::a(
-                            '<span class="glyphicon glyphicon-ok"></span>',
-                            ['task/open-task', 'task_id' => $model->id],
-                            ['title' => Yii::t('task', 'Close')]
-                        )
-                        :
-                        Html::a(
-                            '<span class="glyphicon glyphicon-unchecked"></span>',
-                            ['task/close-task', 'task_id' => $model->id],
-                            ['title' => Yii::t('task', 'Open')]
-                        )
-                    ;
+
+    <div class="list-group">
+        <?= ListView::widget([
+            'dataProvider' => $dataProvider,
+            'itemOptions' => [
+                'tag' => false
+            ],
+            'itemView' =>
+                function ($task, $key, $index, $widget) {
+                    return $this->render('list-item', [
+                        'task' => $task,
+                    ]);
                 },
-                'filter' => [
-                    0 => Yii::t('task', 'Opened'),
-                    1 => Yii::t('task', 'Closed'),
-                ],
-            ],
-
-            // 'created_at',
-            // 'closed_at',
-
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}'
-            ],
-        ],
-    ]); ?>
+        ]) ?>
+    </div>
 
 </div>
