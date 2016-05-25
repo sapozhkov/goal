@@ -65,7 +65,7 @@ use yii\jui\DatePicker;
             </div>
 
             <div>
-
+                <?= $form->field($model, 'icon')->textInput(['maxlength' => true]) ?>
             </div>
 
         </div>

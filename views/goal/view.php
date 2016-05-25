@@ -1,5 +1,6 @@
 <?php
 
+use app\helper\Icon;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -73,6 +74,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <label><?= Yii::t('goal', 'Done At') ?></label>
                 <?= Yii::$app->formatter->asDate($goal->done_at) ?>
                 (<?= Yii::$app->formatter->asRelativeTime($goal->done_at) ?>)
+            </div>
+            <? endif; ?>
+            <? if ($goal->icon): ?>
+            <div>
+                <label><?= Yii::t('goal', 'Icon') ?></label>
+                <?= Icon::getIconHtml($goal->icon) ?>
             </div>
             <? endif; ?>
 

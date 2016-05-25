@@ -3,12 +3,18 @@
 /**
  * @var \app\models\Goal $goal
  */
+//use app\helper\Icon;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
 ?>
 
 <a href="<?= Url::to(['view', 'id' => $goal->id])?>" class="list-group-item">
+
+<!--    --><?// if($goal->icon): ?>
+<!--        --><?//= Icon::getIconHtml($goal->icon, ['style' =>'font-size: 42px;', 'class' => 'list-inline']) ?>
+<!--    --><?// endif; ?>
+
     <h4 class="list-group-item-heading goal-list-item-heading"><?= Html::encode($goal->title) ?></h4>
     <div class="list-group-item-text">
 

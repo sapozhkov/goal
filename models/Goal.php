@@ -11,6 +11,7 @@ use yii\helpers\Url;
  *
  * @property integer $id
  * @property string $title
+ * @property string $icon
  * @property integer $status_id
  * @property integer $priority_id
  * @property integer $type_id
@@ -49,8 +50,8 @@ class Goal extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['status_id', 'priority_id', 'type_id', 'percent'], 'integer'],
-            [['description','smart_specific', 'smart_measurable', 'smart_achievable', 'smart_relevant', 'smart_time_bound'], 'string'],
-            [['created_at', 'to_be_done_at', 'done_at'], 'safe'],
+            [['description','smart_specific', 'smart_measurable', 'smart_achievable', 'smart_relevant', 'smart_time_bound', 'icon'], 'string'],
+            [['created_at', 'to_be_done_at', 'done_at', 'icon'], 'safe'],
             [['title'], 'string', 'max' => 256]
         ];
     }
