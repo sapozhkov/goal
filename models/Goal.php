@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\modules\settings\models\Status;
+use app\modules\settings\models\Type;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\Url;

@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace app\modules\settings\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * TypeSearch represents the model behind the search form about `app\models\Type`.
+ * TypeSearch represents the model behind the search form about `app\modules\settings\models\Type`.
  */
 class TypeSearch extends Type
 {

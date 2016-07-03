@@ -3,7 +3,7 @@
 use app\models\Goal;
 use app\models\Priority;
 use app\modules\settings\models\Status;
-use app\models\Type;
+use app\modules\settings\models\Type;
 use \yii\helpers\Html;
 /**
  * @var \app\models\Log $log

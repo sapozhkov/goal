@@ -36,7 +36,7 @@ use yii\jui\DatePicker;
 
             <div>
                 <?= $form->field($model, 'type_id')->dropDownList(
-                    ArrayHelper::map(models\TypeSearch::getAll(), 'id', 'title')
+                    ArrayHelper::map(\app\modules\settings\models\TypeSearch::getAll(), 'id', 'title')
                 ) ?>
             </div>
 

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Type */
+/* @var $model \app\modules\settings\models\Type */
 
 $this->title = Yii::t('type', 'Create Type');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('type', 'Types'), 'url' => ['index']];

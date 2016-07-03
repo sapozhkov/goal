@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\settings\controllers;
 
 use Yii;
-use app\models\Type;
-use app\models\TypeSearch;
+use app\modules\settings\models\Type;
+use app\modules\settings\models\TypeSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -117,7 +117,7 @@ class TypeController extends Controller
      * Finds the Type model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Type the loaded model
+     * @return \app\modules\settings\models\Type the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
