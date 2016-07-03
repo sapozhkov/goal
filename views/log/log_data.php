@@ -2,7 +2,7 @@
 
 use app\models\Goal;
 use app\models\Priority;
-use app\models\Status;
+use app\modules\settings\models\Status;
 use app\models\Type;
 use \yii\helpers\Html;
 /**

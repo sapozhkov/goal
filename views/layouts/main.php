@@ -40,9 +40,9 @@ AppAsset::register($this);
             ]
             :
             [
-                ['label' => \Yii::t('status', 'Statuses'), 'url' => ['status/index']],
-                ['label' => \Yii::t('type', 'Types'), 'url' => ['type/index']],
-                ['label' => \Yii::t('priority', 'Priorities'), 'url' => ['priority/index']],
+                ['label' => \Yii::t('status', 'Statuses'), 'url' => ['settings/status/index']],
+                ['label' => \Yii::t('type', 'Types'), 'url' => ['//type/index']],
+                ['label' => \Yii::t('priority', 'Priorities'), 'url' => ['//priority/index']],
                 [
                     'label' => \Yii::t('app', 'Logout ({0})', [Yii::$app->user->identity->username]),
                     'url' => ['/site/logout'],

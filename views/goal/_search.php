@@ -1,7 +1,7 @@
 <?php
 
 use app\models\Priority;
-use app\models\Status;
+use app\modules\settings\models\Status;
 use app\models\Type;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

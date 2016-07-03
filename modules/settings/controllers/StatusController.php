@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\settings\controllers;
 
 use Yii;
-use app\models\Status;
-use app\models\StatusSearch;
+use app\modules\settings\models\Status;
+use app\modules\settings\models\StatusSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -117,7 +117,7 @@ class StatusController extends Controller
      * Finds the Status model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Status the loaded model
+     * @return \app\modules\settings\models\Status the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

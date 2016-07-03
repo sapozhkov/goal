@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\settings\models\Status;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\Url;

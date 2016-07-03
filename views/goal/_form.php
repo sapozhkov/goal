@@ -24,7 +24,7 @@ use yii\jui\DatePicker;
 
             <div>
                 <?= $form->field($model, 'status_id')->dropDownList(
-                    ArrayHelper::map(models\StatusSearch::getAll(), 'id', 'title')
+                    ArrayHelper::map(\app\modules\settings\models\StatusSearch::getAll(), 'id', 'title')
                 ) ?>
             </div>
 

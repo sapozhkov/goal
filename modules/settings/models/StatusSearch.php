@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace app\modules\settings\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * StatusSearch represents the model behind the search form about `app\models\Status`.
+ * StatusSearch represents the model behind the search form about `app\modules\settings\models\Status`.
  */
 class StatusSearch extends Status
 {
