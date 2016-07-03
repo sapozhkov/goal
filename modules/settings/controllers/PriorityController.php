@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\settings\controllers;
 
 use Yii;
-use app\models\Priority;
-use app\models\PrioritySearch;
+use app\modules\settings\models\Priority;
+use app\modules\settings\models\PrioritySearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

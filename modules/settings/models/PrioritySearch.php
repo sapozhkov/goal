@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models;
+namespace app\modules\settings\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * PrioritySearch represents the model behind the search form about `app\models\Priority`.
+ * PrioritySearch represents the model behind the search form about `app\modules\settings\models\Priority`.
  */
 class PrioritySearch extends Priority
 {

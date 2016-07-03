@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Priority */
+/* @var $model \app\modules\settings\models\Priority */
 
 $this->title = Yii::t('priority', 'Create Priority');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('priority', 'Priorities'), 'url' => ['index']];

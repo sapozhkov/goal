@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models;
+namespace app\modules\settings\models;
 
+use app\models\Goal;
 use Yii;
 
 /**
