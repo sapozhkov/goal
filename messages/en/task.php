@@ -25,6 +25,7 @@ return [
     'Create Task' => '',
     'Created At' => '',
     'Date' => '',
+    'Description' => '',
     'Goal ID' => '',
     'ID' => '',
     'Open' => '',

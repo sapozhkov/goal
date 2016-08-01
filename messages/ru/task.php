@@ -25,6 +25,7 @@ return [
     'Create Task' => 'Создать Задачу',
     'Created At' => 'Создано',
     'Date' => 'Выполнить к',
+    'Description' => 'Описание',
     'Goal ID' => 'ID Цели',
     'ID' => '',
     'Open' => 'Открыть',
