@@ -17,11 +17,13 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'All' => 'Все',
     'Are you sure you want to delete this item?' => 'Вы уверены, что хотите удалить запись?',
     'Authorization' => 'Авторизация',
     'Create' => 'Создать',
     'Delete' => 'Удалить',
     'Diff' => '',
+    'Filter' => 'Фильтр',
     'Login' => 'Войти',
     'Logout ({0})' => 'Выйти ({0})',
     'My Goals' => '',
@@ -29,6 +31,7 @@ return [
     'Remember Me' => 'Запомнить меня',
     'Reset' => 'Сбросить',
     'Search' => 'Поиск',
+    'Sort By' => 'Сортировать по',
     'Update' => 'Редактировать',
     'Update {modelClass}: ' => 'Обновить "{modelClass}": ',
     'Username' => 'Имя',
