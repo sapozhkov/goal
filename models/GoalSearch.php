@@ -13,7 +13,7 @@ class GoalSearch extends Goal
 {
 
     /** @var string Sort field */
-    public $sort;
+    public $sort = 'to_be_done_at';
 
     public function init() {
         parent::init();
@@ -101,6 +101,6 @@ class GoalSearch extends Goal
      * @return bool
      */
     public function isUsed() {
-        return $this->title or $this->status_id or $this->priority_id or $this->type_id or $this->sort;
+        return $this->title or $this->status_id or $this->priority_id or $this->type_id or $this->sort!='to_be_done_at';
     }
 }
