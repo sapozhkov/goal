@@ -134,7 +134,7 @@ class GoalController extends Controller
         $model = new Log();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->goal_id]);
+            return $this->redirect(['view', 'id' => $model->goal_id, '#' => 'log']);
         } else {
             throw new ErrorException('Cannot add message');
         }

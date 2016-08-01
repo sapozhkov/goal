@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 
 ?>
 
+<a name="log"></a>
 <h2><?= Html::a(\Yii::t('log', 'Logs'), $goal->urlLogList()); ?></h2>
 
 <? foreach ($logRows as $log): ?>
