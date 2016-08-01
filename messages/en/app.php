@@ -17,11 +17,13 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'All' => '',
     'Are you sure you want to delete this item?' => '',
     'Authorization' => '',
     'Create' => '',
     'Delete' => '',
     'Diff' => '',
+    'Filter' => '',
     'Login' => '',
     'Logout ({0})' => '',
     'My Goals' => '',
@@ -29,6 +31,7 @@ return [
     'Remember Me' => '',
     'Reset' => '',
     'Search' => '',
+    'Sort By' => '',
     'Update' => '',
     'Update {modelClass}: ' => '',
     'Username' => '',

@@ -16,6 +16,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $percent
  * @property string $created_at
  * @property string $closed_at
+ * @property string $description
  *
  * @property Goal $goal
  */
@@ -36,7 +37,7 @@ class Task extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['date', 'created_at', 'closed_at'], 'safe'],
+            [['date', 'created_at', 'closed_at', 'description'], 'safe'],
             [['goal_id', 'closed', 'percent'], 'integer'],
             [['title'], 'string', 'max' => 256]
         ];
@@ -69,6 +70,7 @@ class Task extends \yii\db\ActiveRecord
             'goal_id' => Yii::t('task', 'Goal ID'),
             'closed' => Yii::t('task', 'Closed'),
             'percent' => Yii::t('task', 'Percent'),
+            'description' => Yii::t('task', 'Description'),
             'created_at' => Yii::t('task', 'Created At'),
             'closed_at' => Yii::t('task', 'Closed At'),
         ];

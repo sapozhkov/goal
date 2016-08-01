@@ -1,8 +1,8 @@
 <?php
 
-use app\models\Priority;
-use app\models\Status;
-use app\models\Type;
+use app\modules\settings\models\Priority;
+use app\modules\settings\models\Status;
+use app\modules\settings\models\Type;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -61,7 +61,7 @@ use yii\widgets\ActiveForm;
 
         <div class="col-sm-4">
         <?= $form->field($model, 'sort')->dropDownList([
-                '' => '',
+                'to_be_done_at' => 'date',
                 'id' => 'id',
                 '-id' => '-id',
             ])

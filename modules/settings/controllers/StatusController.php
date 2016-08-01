@@ -1,23 +1,19 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\settings\controllers;
 
-use app\models\GoalForm;
-use app\models\Task;
 use Yii;
-use app\models\Goal;
-use app\models\GoalSearch;
-use app\models\Log;
-use yii\base\ErrorException;
+use app\modules\settings\models\Status;
+use app\modules\settings\models\StatusSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * GoalController implements the CRUD actions for Goal model.
+ * StatusController implements the CRUD actions for Status model.
  */
-class GoalController extends Controller
+class StatusController extends Controller
 {
     public function behaviors()
     {
@@ -41,12 +37,12 @@ class GoalController extends Controller
     }
 
     /**
-     * Lists all Goal models.
+     * Lists all Status models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new GoalSearch();
+        $searchModel = new StatusSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -56,46 +52,25 @@ class GoalController extends Controller
     }
 
     /**
-     * Displays a single Goal model.
+     * Displays a single Status model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-
-        $logRows = Log::find()
-            ->where(['goal_id' => $id])
-            ->orderBy('created_at DESC')
-            ->limit(5)
-            ->all()
-        ;
-
-        $taskRows = Task::find()
-            ->where([
-                'goal_id' => $id,
-                'closed' => 0
-            ])
-            ->orderBy('date')
-            ->limit(5)
-            ->all()
-        ;
-
         return $this->render('view', [
-            'goal' => $this->findModel($id),
-            'logRows' => $logRows,
-            'taskRows' => $taskRows,
-            'logModel' => new Log(['goal_id' => $id])
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Goal model.
+     * Creates a new Status model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Goal();
+        $model = new Status();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -107,18 +82,14 @@ class GoalController extends Controller
     }
 
     /**
-     * Updates an existing Goal model.
+     * Updates an existing Status model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
-        $model = GoalForm::findOne($id);
-
-        if ( !$model )
-            throw new NotFoundHttpException();
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -129,28 +100,29 @@ class GoalController extends Controller
         }
     }
 
-    public function actionMessage() {
+    /**
+     * Deletes an existing Status model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
 
-        $model = new Log();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->goal_id, '#' => 'log']);
-        } else {
-            throw new ErrorException('Cannot add message');
-        }
-
+        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Goal model based on its primary key value.
+     * Finds the Status model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Goal the loaded model
+     * @return \app\modules\settings\models\Status the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Goal::findOne($id)) !== null) {
+        if (($model = Status::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

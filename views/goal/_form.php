@@ -24,19 +24,19 @@ use yii\jui\DatePicker;
 
             <div>
                 <?= $form->field($model, 'status_id')->dropDownList(
-                    ArrayHelper::map(models\StatusSearch::getAll(), 'id', 'title')
+                    ArrayHelper::map(\app\modules\settings\models\StatusSearch::getAll(), 'id', 'title')
                 ) ?>
             </div>
 
             <div>
                 <?= $form->field($model, 'priority_id')->dropDownList(
-                    ArrayHelper::map(models\PrioritySearch::getAll(), 'id', 'title')
+                    ArrayHelper::map(\app\modules\settings\models\PrioritySearch::getAll(), 'id', 'title')
                 ) ?>
             </div>
 
             <div>
                 <?= $form->field($model, 'type_id')->dropDownList(
-                    ArrayHelper::map(models\TypeSearch::getAll(), 'id', 'title')
+                    ArrayHelper::map(\app\modules\settings\models\TypeSearch::getAll(), 'id', 'title')
                 ) ?>
             </div>
 
