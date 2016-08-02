@@ -8,7 +8,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'version' => '0.6',
+    'version' => '0.7',
     'language' => 'en',
     'defaultRoute' => 'goal/index',
     'modules' => [
@@ -27,6 +27,9 @@ $config = [
             'showScriptName' => false,
             // раскоментить, если надо включить точное определение пути
             //'enableStrictParsing' => true,
+            'rules' => [
+                '/<alias:[\w-_]+>' => 'goal/view',
+            ]
         ],
         'i18n' => array(
             'translations' => array(
