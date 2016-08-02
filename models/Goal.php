@@ -53,6 +53,7 @@ class Goal extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'alias'], 'required'],
+            [['alias'], 'match', 'pattern' => '/^[\w-_]+$/'],
             [['status_id', 'priority_id', 'type_id', 'percent'], 'integer'],
             [['description','smart_specific', 'smart_measurable', 'smart_achievable', 'smart_relevant', 'smart_time_bound', 'icon'], 'string'],
             [['title', 'alias', 'created_at', 'to_be_done_at', 'done_at', 'icon'], 'safe'],

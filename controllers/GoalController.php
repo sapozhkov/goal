@@ -57,7 +57,7 @@ class GoalController extends Controller
 
     /**
      * Displays a single Goal model.
-     * @param integer $id
+     * @param $alias
      * @return mixed
      */
     public function actionView($alias)

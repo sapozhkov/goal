@@ -30,7 +30,7 @@ $config = [
             'rules' => [
                 'goal/update' => 'goal/update',
                 'goal/create' => 'goal/create',
-                'goal/<alias:\w+>' => 'goal/view',
+                'goal/<alias:[\w-_]+>' => 'goal/view',
             ]
         ],
         'i18n' => array(
