@@ -13,7 +13,7 @@ class GoalSearch extends Goal
 {
 
     /** @var string Sort field */
-    public $sort = 'to_be_done_at';
+    public $sort = '';
 
     public function init() {
         parent::init();
@@ -62,7 +62,21 @@ class GoalSearch extends Goal
     {
         $query = Goal::find();
 
-        $query->with('type');
+        $query
+            ->with('type')
+            ->with('priority')
+            ->with('status')
+        ;
+
+        if ( !$this->sort ) {
+            $query
+                ->innerJoinWith('priority')
+                ->orderBy([
+                    'priority.weight' => SORT_ASC,
+                    'to_be_done_at' => SORT_ASC
+                ])
+            ;
+        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -101,6 +115,6 @@ class GoalSearch extends Goal
      * @return bool
      */
     public function isUsed() {
-        return $this->title or $this->status_id or $this->priority_id or $this->type_id or $this->sort!='to_be_done_at';
+        return $this->title or $this->status_id or $this->priority_id or $this->type_id or $this->sort;
     }
 }

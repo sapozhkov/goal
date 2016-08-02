@@ -61,7 +61,7 @@ use yii\widgets\ActiveForm;
 
         <div class="col-sm-4">
         <?= $form->field($model, 'sort')->dropDownList([
-                'to_be_done_at' => 'date',
+                '' => 'default',
                 'id' => 'id',
                 '-id' => '-id',
             ])
