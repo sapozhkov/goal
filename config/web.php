@@ -28,6 +28,7 @@ $config = [
             // раскоментить, если надо включить точное определение пути
             //'enableStrictParsing' => true,
             'rules' => [
+                'goal/message' => 'goal/message',
                 'goal/update' => 'goal/update',
                 'goal/create' => 'goal/create',
                 'goal/<alias:[\w-_]+>' => 'goal/view',
