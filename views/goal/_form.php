@@ -44,6 +44,11 @@ use yii\jui\DatePicker;
         </div>
 
         <div class="col-sm-6">
+
+            <div>
+                <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
+            </div>
+
             <div>
                 <?php
                 $aPercent = [];

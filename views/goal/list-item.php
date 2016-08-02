@@ -5,11 +5,10 @@
  */
 use app\helper\Icon;
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 ?>
 
-<a href="<?= Url::to(['view', 'id' => $goal->id])?>" class="list-group-item">
+<a href="<?= $goal->url() ?>" class="list-group-item">
 
     <? if($goal->icon): ?>
         <?= Icon::getIconHtml($goal->icon, ['class' => 'goal-list-icon list-inline']) ?>
