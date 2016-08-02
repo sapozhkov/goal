@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="goal-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($goal->title) ?> <small>(<?= Html::encode($goal->alias) ?>)</small></h1>
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $goal->id], ['class' => 'btn btn-primary']) ?>

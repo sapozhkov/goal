@@ -27,6 +27,11 @@ $config = [
             'showScriptName' => false,
             // раскоментить, если надо включить точное определение пути
             //'enableStrictParsing' => true,
+            'rules' => [
+                'goal/update' => 'goal/update',
+                'goal/create' => 'goal/create',
+                'goal/<alias:\w+>' => 'goal/view',
+            ]
         ],
         'i18n' => array(
             'translations' => array(
