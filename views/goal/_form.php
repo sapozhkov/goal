@@ -66,7 +66,7 @@ use yii\jui\DatePicker;
             </div>
 
             <div>
-                <?= $form->field($model, 'icon')->dropDownList(array_combine(Icon::getList(), Icon::getList())) ?>
+                <?= $form->field($model, 'icon')->dropDownList([''=>''] + array_combine(Icon::getList(), Icon::getList())) ?>
             </div>
 
         </div>
