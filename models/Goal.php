@@ -14,6 +14,8 @@ use yii\helpers\Url;
  *
  * @property integer $id
  * @property string $title
+ * @property string $alias
+ * @property string $icon
  * @property integer $status_id
  * @property integer $priority_id
  * @property integer $type_id
@@ -50,11 +52,13 @@ class Goal extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'alias'], 'required'],
+            [['alias'], 'match', 'pattern' => '/^[\w-_]+$/'],
             [['status_id', 'priority_id', 'type_id', 'percent'], 'integer'],
-            [['description','smart_specific', 'smart_measurable', 'smart_achievable', 'smart_relevant', 'smart_time_bound'], 'string'],
-            [['created_at', 'to_be_done_at', 'done_at'], 'safe'],
-            [['title'], 'string', 'max' => 256]
+            [['description','smart_specific', 'smart_measurable', 'smart_achievable', 'smart_relevant', 'smart_time_bound', 'icon'], 'string'],
+            [['title', 'alias', 'created_at', 'to_be_done_at', 'done_at', 'icon'], 'safe'],
+            [['title'], 'string', 'max' => 256],
+            [['alias'], 'string', 'max' => 32]
         ];
     }
 
@@ -83,6 +87,7 @@ class Goal extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('goal', 'ID'),
             'title' => Yii::t('goal', 'Title'),
+            'alias' => Yii::t('goal', 'Alias'),
             'status_id' => Yii::t('goal', 'Status'),
             'priority_id' => Yii::t('goal', 'Priority'),
             'type_id' => Yii::t('goal', 'Type'),
@@ -138,10 +143,11 @@ class Goal extends \yii\db\ActiveRecord
 
     /**
      * Url to goal/view
+     * @param array $params add params
      * @return string
      */
-    public function url() {
-        return Url::to(['goal/view', 'id' => $this->id]);
+    public function url($params = []) {
+        return Url::to(['goal/view', 'alias' => $this->alias]+$params);
     }
 
     /**

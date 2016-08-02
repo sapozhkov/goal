@@ -1,5 +1,6 @@
 <?php
 
+use app\helper\Icon;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -43,6 +44,11 @@ use yii\jui\DatePicker;
         </div>
 
         <div class="col-sm-6">
+
+            <div>
+                <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
+            </div>
+
             <div>
                 <?php
                 $aPercent = [];
@@ -65,7 +71,7 @@ use yii\jui\DatePicker;
             </div>
 
             <div>
-
+                <?= $form->field($model, 'icon')->dropDownList([''=>''] + array_combine(Icon::getList(), Icon::getList())) ?>
             </div>
 
         </div>

@@ -57,11 +57,14 @@ class GoalController extends Controller
 
     /**
      * Displays a single Goal model.
-     * @param integer $id
+     * @param $alias
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($alias)
     {
+
+        $goal = $this->findModel(['alias' => $alias]);
+        $id = $goal->id;
 
         $logRows = Log::find()
             ->where(['goal_id' => $id])
@@ -81,7 +84,7 @@ class GoalController extends Controller
         ;
 
         return $this->render('view', [
-            'goal' => $this->findModel($id),
+            'goal' => $goal,
             'logRows' => $logRows,
             'taskRows' => $taskRows,
             'logModel' => new Log(['goal_id' => $id])
@@ -98,7 +101,7 @@ class GoalController extends Controller
         $model = new Goal();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect($model->url());
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -121,7 +124,7 @@ class GoalController extends Controller
             throw new NotFoundHttpException();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect($model->url());
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -134,7 +137,7 @@ class GoalController extends Controller
         $model = new Log();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->goal_id, '#' => 'log']);
+            return $this->redirect($model->goal->url(['#' => 'log']));
         } else {
             throw new ErrorException('Cannot add message');
         }
@@ -144,13 +147,13 @@ class GoalController extends Controller
     /**
      * Finds the Goal model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param string $alias
      * @return Goal the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($alias)
     {
-        if (($model = Goal::findOne($id)) !== null) {
+        if (($model = Goal::findOne(['alias' => $alias])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
