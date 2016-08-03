@@ -121,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </tbody>
     </table>
 
-    <?= $this->render('/task/first_list', [
+    <?= $this->render('first_tasks', [
         'taskRows' => $taskRows,
         'goal' => $goal
     ]) ?>

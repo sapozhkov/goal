@@ -145,6 +145,24 @@ class GoalController extends Controller
     }
 
     /**
+     * Closes task and return to list interface
+     * @param int $task_id
+     * @throws NotFoundHttpException
+     */
+    public function actionCloseTask($task_id) {
+
+        $task = Task::findOne($task_id);
+        if ( !$task )
+            throw new NotFoundHttpException("No task id=`$task_id`");
+
+        $task->closed = 1;
+        $task->save();
+
+        $this->redirect($task->goal->url(['#' => 'tasks']));
+
+    }
+
+    /**
      * Finds the Goal model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $alias

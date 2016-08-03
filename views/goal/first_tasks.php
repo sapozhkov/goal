@@ -9,6 +9,7 @@ use yii\helpers\Html;
 
 ?>
 
+<a name="tasks"></a>
 <h2><?= Html::a(Yii::t('task', 'Tasks'), $goal->urlTaskList()); ?></h2>
 <p>
     <?= Html::a(Yii::t('task', 'Create Task'), ['task/create', 'goal_id' => $goal->id], ['class' => 'btn btn-success']) ?>
@@ -17,7 +18,7 @@ use yii\helpers\Html;
 <? foreach ($taskRows as $task): ?>
     <p>
         <?= Html::a('<span class="glyphicon glyphicon-unchecked"></span>',
-            ['task/close-task', 'task_id' => $task->id],
+            ['close-task', 'task_id' => $task->id],
             ['title' => Yii::t('task', 'Close')])
         ?>
         <strong><?= Yii::$app->formatter->asDatetime($task->date) ?></strong>
