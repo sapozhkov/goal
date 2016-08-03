@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= Html::hiddenInput('referrer', \Yii::$app->request->referrer) ?>
+
     <?= $form->field($model, 'id')->textInput() ?>
 
     <?= $form->field($model, 'goal_id')->textInput() ?>

@@ -68,7 +68,7 @@ class LogController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect($model->goal->urlLogList());
+            return $this->redirect(Yii::$app->request->post('referrer') ?: $model->goal->urlLogList());
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -86,10 +86,9 @@ class LogController extends Controller
     {
         $log = $this->findModel($id);
 
-        $url = $log->goal->urlLogList();
         $log->delete();
 
-        return $this->redirect($url);
+        return $this->redirect(\Yii::$app->request->referrer);
     }
 
     /**

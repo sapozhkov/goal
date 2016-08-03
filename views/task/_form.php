@@ -18,6 +18,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'date')->widget(DatePicker::className(), ['dateFormat'=>'php:Y-m-d']) ?>
 
     <?= Html::hiddenInput('Task[goal_id]', $model->goal_id) ?>
+    <?= Html::hiddenInput('referrer', \Yii::$app->request->referrer) ?>
 
     <?= $form->field($model, 'closed')->checkbox() ?>
 
