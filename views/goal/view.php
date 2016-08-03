@@ -126,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'goal' => $goal
     ]) ?>
 
-    <?= $this->render('/log/last_list', [
+    <?= $this->render('last_log_rows', [
         'logRows' => $logRows,
         'logModel' => $logModel,
         'goal' => $goal
