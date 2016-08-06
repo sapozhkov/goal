@@ -34,12 +34,12 @@ use yii\helpers\Html;
 
             <nobr>
 
-                <span title="<?= \Yii::t('goal', 'Priority') ?>">
+                <span title="<?= strip_tags(\Yii::$app->formatter->asDate($task->date)) ?>">
                     <span class="glyphicon glyphicon-calendar"></span>
                     <?= \Yii::$app->formatter->asRelativeTime($task->date) ?>
                 </span>
                 <? if ($task->percent): ?>
-                <span title="<?= \Yii::t('goal', 'Type' ) ?>">
+                <span title="<?= Yii::t('task', 'Percent') ?>">
                     <span class="glyphicon glyphicon-tasks"></span>
                     <?= $task->percent ?>%
                 </span>
