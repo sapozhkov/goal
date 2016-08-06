@@ -75,6 +75,8 @@ class GoalSearch extends Goal
                     'priority.weight' => SORT_ASC,
                     'to_be_done_at' => SORT_ASC
                 ])
+                ->innerJoinWith('status')
+                ->where('status.closed=0')
             ;
         }
 
