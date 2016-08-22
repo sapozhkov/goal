@@ -16,8 +16,6 @@ use yii\helpers\Url;
 /* @var $tasksOverdueCount int */
 /* @var $goalsOverdueCount int */
 ?>
-<h1>Dashboard</h1>
-
 <div class="row">
 
     <? if ($tasksOverdueCount): ?>
