@@ -29,7 +29,7 @@ use yii\helpers\Html;
 
         <div class="col-xs-10">
 
-            <h4 class="list-group-item-heading goal-list-item-heading"><?= Html::a(Html::encode($task->title), ['update', 'id' => $task->id]) ?></h4>
+            <h4 class="list-group-item-heading goal-list-item-heading"><?= Html::a(Html::encode($task->title), ['task/update', 'id' => $task->id]) ?></h4>
             <div class="list-group-item-text">
 
             <nobr>
