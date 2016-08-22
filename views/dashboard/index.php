@@ -18,60 +18,76 @@ use yii\helpers\Url;
 ?>
 <h1>Dashboard</h1>
 
-<? if ($tasksWithoutDateCount): ?>
-    <h2>Tasks Without Date <span title="Total" class="label label-danger"><?= $tasksWithoutDateCount ?></span></h2>
-    <? foreach ($tasksWithoutDate as $task): ?>
-        <?= $this->render('/task/list-item', [
-            'task' => $task,
-            'showGoalTitle' => true
-        ]); ?>
-    <? endforeach; ?>
-<? endif; ?>
+<div class="row">
+
+    <? if ($tasksOverdueCount): ?>
+        <div class="col-sm-3 col-xs-12">
+            <h2>Overdue Tasks <span title="Total" class="label label-danger"><?= $tasksOverdueCount ?></span></h2>
+            <? foreach ($tasksOverdue as $task): ?>
+                <?= $this->render('/task/list-item', [
+                    'task' => $task,
+                    'showGoalTitle' => true
+                ]); ?>
+            <? endforeach; ?>
+        </div>
+    <? endif; ?>
 
 
-<? if ($goalsWithoutDateCount): ?>
-    <h2>Goals Without Date <span title="Total" class="label label-danger"><?= $goalsWithoutDateCount ?></span></h2>
-    <? foreach ($goalsWithoutDate as $goal): ?>
-        <?= $this->render('/goal/list-item', [
-            'goal' => $goal,
-        ]); ?>
-    <? endforeach; ?>
-<? endif; ?>
+    <? if ($tasksWithoutDateCount): ?>
+        <div class="col-sm-3 col-xs-12">
+            <h2>Tasks No Date <span title="Total" class="label label-danger"><?= $tasksWithoutDateCount ?></span></h2>
+            <? foreach ($tasksWithoutDate as $task): ?>
+                <?= $this->render('/task/list-item', [
+                    'task' => $task,
+                    'showGoalTitle' => true
+                ]); ?>
+            <? endforeach; ?>
+        </div>
+    <? endif; ?>
 
+    <? if ($goalsOverdueCount): ?>
+        <div class="col-sm-3 col-xs-12">
+            <h2>Overdue Goals <span title="Total" class="label label-danger"><?= $goalsOverdueCount ?></span></h2>
+            <? foreach ($goalsOverdue as $goal): ?>
+                <?= $this->render('/goal/list-item', [
+                    'goal' => $goal,
+                ]); ?>
+            <? endforeach; ?>
+        </div>
+    <? endif; ?>
 
-<? if ($tasksOverdueCount): ?>
-    <h2>Overdue Tasks <span title="Total" class="label label-danger"><?= $tasksOverdueCount ?></span></h2>
-    <? foreach ($tasksOverdue as $task): ?>
-        <?= $this->render('/task/list-item', [
-            'task' => $task,
-            'showGoalTitle' => true
-        ]); ?>
-    <? endforeach; ?>
-<? endif; ?>
+    <? if ($goalsWithoutDateCount): ?>
+        <div class="col-sm-3 col-xs-12">
+            <h2>Goals No Date <span title="Total" class="label label-danger"><?= $goalsWithoutDateCount ?></span></h2>
+            <? foreach ($goalsWithoutDate as $goal): ?>
+                <?= $this->render('/goal/list-item', [
+                    'goal' => $goal,
+                ]); ?>
+            <? endforeach; ?>
+        </div>
+    <? endif; ?>
 
-<? if ($goalsOverdueCount): ?>
-    <h2>Overdue Goals <span title="Total" class="label label-danger"><?= $goalsOverdueCount ?></span></h2>
-    <? foreach ($goalsOverdue as $goal): ?>
-        <?= $this->render('/goal/list-item', [
-            'goal' => $goal,
-        ]); ?>
-    <? endforeach; ?>
-<? endif; ?>
+</div>
 
+<div class="row">
 
-<h2>Nearest Tasks <span title="Total" class="label label-primary"><?= $tasksCount ?></span></h2>
+    <div class="col-sm-9 col-xs-12">
+        <h2>Nearest Tasks <span title="Total" class="label label-primary"><?= $tasksCount ?></span></h2>
+        <? foreach ($tasks as $task): ?>
+            <?= $this->render('/task/list-item', [
+                'task' => $task,
+                'showGoalTitle' => true
+            ]); ?>
+        <? endforeach; ?>
+    </div>
 
-<? foreach ($tasks as $task): ?>
-    <?= $this->render('/task/list-item', [
-        'task' => $task,
-        'showGoalTitle' => true
-    ]); ?>
-<? endforeach; ?>
+    <div class="col-sm-3 col-xs-12">
+        <h2>Nearest Goals <?= Html::a($goalsCount, Url::to('/goal/index'), ['class' => 'label label-primary']) ?></h2>
+        <? foreach ($goals as $goal): ?>
+            <?= $this->render('/goal/list-item', [
+                'goal' => $goal,
+            ]); ?>
+        <? endforeach; ?>
+    </div>
 
-<h2>Nearest Goals <?= Html::a($goalsCount, Url::to('/goal/index'), ['class' => 'label label-primary']) ?></h2>
-
-<? foreach ($goals as $goal): ?>
-    <?= $this->render('/goal/list-item', [
-        'goal' => $goal,
-    ]); ?>
-<? endforeach; ?>
+</div>
