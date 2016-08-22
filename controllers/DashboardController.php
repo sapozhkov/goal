@@ -15,23 +15,77 @@ class DashboardController extends \yii\web\Controller
             ->orderBy('date')
             ->limit(10)
         ;
-        $taskCount = $taskQuery->count();
+        $tasksCount = $taskQuery->count();
         $tasks = $taskQuery->andWhere('date')->all();
+
+        // tasks without date
+        $tasksWithoutDateQuery = Task::find()
+            ->where(['closed' => 0])
+            ->andWhere('date is NULL')
+            ->orderBy('id')
+            ->limit(10)
+        ;
+        $tasksWithoutDateCount = $tasksWithoutDateQuery->count();
+        $tasksWithoutDate = $tasksWithoutDateQuery->all();
+
+        // overdue tasks
+        $tasksOverdueQuery = Task::find()
+            ->where(['closed' => 0])
+            ->andWhere('date < NOW()')
+            ->orderBy('date')
+            ->limit(10)
+        ;
+        $tasksOverdueCount = $tasksOverdueQuery->count();
+        $tasksOverdue = $tasksOverdueQuery->all();
+
+
+        /********************************************************************/
 
         // nearest goals
         $goalQuery = Goal::find()
             ->innerJoinWith('status')
             ->where('status.closed=0')
-            ->andWhere('to_be_done_at')
             ->orderBy('to_be_done_at')
             ->limit(3)
         ;
+        $goalsCount = $goalQuery->count();
+        $goals = $goalQuery->andWhere('to_be_done_at')->all();
+
+        // goals without date
+        $goalsWithoutDateQuery = Goal::find()
+            ->innerJoinWith('status')
+            ->where('status.closed=0')
+            ->andWhere('to_be_done_at is NULL')
+            ->orderBy('goal.id')
+            ->limit(10)
+        ;
+        $goalsWithoutDateCount = $goalsWithoutDateQuery->count();
+        $goalsWithoutDate = $goalsWithoutDateQuery->all();
+
+        // overdue goals
+        $goalsOverdueQuery = Goal::find()
+            ->innerJoinWith('status')
+            ->where('status.closed=0')
+            ->andWhere('to_be_done_at < NOW()')
+            ->orderBy('goal.id')
+            ->limit(10)
+        ;
+        $goalsOverdueCount = $goalsOverdueQuery->count();
+        $goalsOverdue = $goalsOverdueQuery->all();
 
         return $this->render('index', [
             'tasks' => $tasks,
-            'taskCount' => $taskCount,
-            'goals' => $goalQuery->all(),
-            'goalCount' => $goalQuery->count('*')
+            'tasksCount' => $tasksCount,
+            'tasksWithoutDate' => $tasksWithoutDate,
+            'tasksWithoutDateCount' => $tasksWithoutDateCount,
+            'tasksOverdue' => $tasksOverdue,
+            'tasksOverdueCount' => $tasksOverdueCount,
+            'goals' => $goals,
+            'goalsCount' => $goalsCount,
+            'goalsWithoutDate' => $goalsWithoutDate,
+            'goalsWithoutDateCount' => $goalsWithoutDateCount,
+            'goalsOverdue' => $goalsOverdue,
+            'goalsOverdueCount' => $goalsOverdueCount,
         ]);
     }
 

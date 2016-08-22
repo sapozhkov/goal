@@ -45,7 +45,7 @@ if ( !isset($showGoalTitle) )
 
                 <span title="<?= strip_tags(\Yii::$app->formatter->asDate($task->date)) ?>">
                     <span class="glyphicon glyphicon-calendar"></span>
-                    <?= \Yii::$app->formatter->asRelativeTime($task->date) ?>
+                    <?= \Yii::$app->formatter->asRelativeTimeHighlight($task->date) ?>
                 </span>
                 <? if ($task->percent): ?>
                 <span title="<?= Yii::t('task', 'Percent') ?>">
