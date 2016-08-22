@@ -46,7 +46,7 @@ class DashboardController extends \yii\web\Controller
             ->innerJoinWith('status')
             ->where('status.closed=0')
             ->orderBy('to_be_done_at')
-            ->limit(3)
+            ->limit(7)
         ;
         $goalsCount = $goalQuery->count();
         $goals = $goalQuery->andWhere('to_be_done_at')->all();
