@@ -31,7 +31,10 @@ use yii\widgets\ActiveForm;
                 'id',
                 'title'
             );
-            echo $form->field($model, 'status_id')->dropDownList([''=>''] + $statusList);
+            echo $form->field($model, 'status_id')->dropDownList([''=>''] + $statusList+[
+                    Status::OPENED => \Yii::t('Type', '<< Opened >>'),
+                    Status::CLOSED => \Yii::t('Type', '<< Closed >>'),
+                ]);
         ?>
         </div>
 

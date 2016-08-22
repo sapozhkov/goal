@@ -17,6 +17,10 @@ use Yii;
  */
 class Status extends \yii\db\ActiveRecord
 {
+    /** constants for searching */
+    const OPENED = -1;
+    const CLOSED = -2;
+
     /**
      * @inheritdoc
      */

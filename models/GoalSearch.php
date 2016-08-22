@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\modules\settings\models\Status;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -68,7 +69,7 @@ class GoalSearch extends Goal
             ->with('status')
         ;
 
-        if ( !$this->sort ) {
+        if ( !$this->isUsed() ) {
             $query
                 ->innerJoinWith('priority')
                 ->orderBy([
@@ -95,9 +96,28 @@ class GoalSearch extends Goal
             return $dataProvider;
         }
 
+        switch ( (int)$this->status_id ) {
+            case 0:
+                break;
+            case Status::OPENED:
+                $query
+                    ->innerJoinWith('status')
+                    ->where('status.closed=0')
+                ;
+                break;
+            case Status::CLOSED:
+                $query
+                    ->innerJoinWith('status')
+                    ->where('status.closed=1')
+                ;
+                break;
+            default:
+                $query->andFilterWhere(['status_id' => $this->status_id]);
+                break;
+        }
+
         $query->andFilterWhere([
             'id' => $this->id,
-            'status_id' => $this->status_id,
             'priority_id' => $this->priority_id,
             'type_id' => $this->type_id,
             'created_at' => $this->created_at,
