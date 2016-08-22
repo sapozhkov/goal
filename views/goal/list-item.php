@@ -26,6 +26,10 @@ use yii\helpers\Html;
                 <span class="glyphicon glyphicon-time"></span>
                 <?= $goal->type->title ?>
             </span>
+            <span title="<?= Yii::t('task', 'Percent') ?>">
+                <span class="glyphicon glyphicon-tasks"></span>
+                <?= $goal->percent ?>%
+            </span>
         </nobr>
 
         <nobr>
