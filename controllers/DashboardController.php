@@ -2,22 +2,36 @@
 
 namespace app\controllers;
 
+use app\models\Goal;
 use app\models\Task;
 
 class DashboardController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $aTasks = Task::find()
+        // nearest tasks
+        $taskQuery = Task::find()
             ->where(['closed' => 0])
-            ->andWhere('date')
             ->orderBy('date')
             ->limit(10)
-            ->all()
+        ;
+        $taskCount = $taskQuery->count();
+        $tasks = $taskQuery->andWhere('date')->all();
+
+        // nearest goals
+        $goalQuery = Goal::find()
+            ->innerJoinWith('status')
+            ->where('status.closed=0')
+            ->andWhere('to_be_done_at')
+            ->orderBy('to_be_done_at')
+            ->limit(3)
         ;
 
         return $this->render('index', [
-            'tasks' => $aTasks,
+            'tasks' => $tasks,
+            'taskCount' => $taskCount,
+            'goals' => $goalQuery->all(),
+            'goalCount' => $goalQuery->count('*')
         ]);
     }
 

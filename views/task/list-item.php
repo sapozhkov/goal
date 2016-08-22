@@ -2,8 +2,12 @@
 
 /**
  * @var \app\models\Task $task
+ * @var bool $showGoalTitle
  */
 use yii\helpers\Html;
+
+if ( !isset($showGoalTitle) )
+    $showGoalTitle = false;
 
 ?>
 
@@ -29,7 +33,12 @@ use yii\helpers\Html;
 
         <div class="col-xs-10">
 
-            <h4 class="list-group-item-heading goal-list-item-heading"><?= Html::a(Html::encode($task->title), ['task/update', 'id' => $task->id]) ?></h4>
+            <h4 class="list-group-item-heading goal-list-item-heading">
+                <?= Html::a(Html::encode($task->title), ['task/update', 'id' => $task->id]) ?>
+                <? if ( $showGoalTitle ): ?>
+                    <small><a href="<?= $task->goal->url() ?>">[<?= $task->goal->title ?>]</a></small>
+                <? endif; ?>
+            </h4>
             <div class="list-group-item-text">
 
             <nobr>
