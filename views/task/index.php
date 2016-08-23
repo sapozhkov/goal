@@ -14,12 +14,13 @@ $this->params['breadcrumbs'][] = Yii::t('task', 'Tasks');
 ?>
 <div class="task-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>
+        <?= Html::encode($this->title) ?>
 
-    <div>
         <?= Html::a(Yii::t('task', 'Create Task'), ['task/create', 'goal_id' => $goal->id], ['class' => 'btn btn-success']) ?>
         <div data-toggle="collapse" data-target="#filter" class="btn  btn-default"><span class="glyphicon glyphicon-filter"></span> <?= \Yii::t('app', 'Filter') ?></div>
-    </div>
+
+    </h1>
 
     <div id="filter" class="collapse <?= $searchModel->isUsed() ? 'in' : '' ?>">
         <?= $this->render('_search', ['model' => $searchModel]); ?>
