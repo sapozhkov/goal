@@ -36,7 +36,7 @@ class Task extends \yii\db\ActiveRecord
      * @return string
      */
     public static function urlToAll() {
-        return Url::to(['/task/all', 'TaskSearch[closed]'=>0]);
+        return Url::to(['/task/all', 'TaskSearch[closed]'=>0, 'sort'=>'date']);
     }
 
     /**
