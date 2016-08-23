@@ -70,7 +70,7 @@ use yii\helpers\Url;
 
 <div class="row">
 
-    <div class="col-sm-9 col-xs-12">
+    <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12">
         <h2>
             <?= \Yii::t('dashboard', 'Nearest Tasks') ?>
             <?= Html::a($tasksCount, Task::urlToAll(), ['class' => 'label label-primary']) ?>
@@ -83,7 +83,7 @@ use yii\helpers\Url;
         <? endforeach; ?>
     </div>
 
-    <div class="col-sm-3 col-xs-12">
+    <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
         <h2><?= \Yii::t('dashboard', 'Nearest Goals') ?> <?= Html::a($goalsCount, Url::to('/goal/index'), ['class' => 'label label-primary']) ?></h2>
         <? foreach ($goals as $goal): ?>
             <?= $this->render('/goal/list-item', [
