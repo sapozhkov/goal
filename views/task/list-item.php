@@ -14,7 +14,7 @@ if ( !isset($showGoalTitle) )
 <div class="list-group-item">
 
     <div class="row">
-        <div class="col-xs-1">
+        <div class="task-list-icon">
             <?
             echo $task->closed ?
                 Html::a(
@@ -31,7 +31,7 @@ if ( !isset($showGoalTitle) )
             ?>
         </div>
 
-        <div class="col-xs-10">
+        <div class="task-list-content-shift">
 
             <h4 class="list-group-item-heading goal-list-item-heading">
                 <?= Html::a(Html::encode($task->title), ['task/update', 'id' => $task->id]) ?>
