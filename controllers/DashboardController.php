@@ -31,7 +31,7 @@ class DashboardController extends \yii\web\Controller
         // overdue tasks
         $tasksOverdueQuery = Task::find()
             ->where(['closed' => 0])
-            ->andWhere('date < NOW()')
+            ->andWhere('date < DATE(NOW())')
             ->orderBy('date')
             ->limit(10)
         ;
@@ -66,7 +66,7 @@ class DashboardController extends \yii\web\Controller
         $goalsOverdueQuery = Goal::find()
             ->innerJoinWith('status')
             ->where('status.closed=0')
-            ->andWhere('to_be_done_at < NOW()')
+            ->andWhere('to_be_done_at < DATE(NOW())')
             ->orderBy('goal.id')
             ->limit(10)
         ;

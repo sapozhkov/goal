@@ -39,7 +39,7 @@ use yii\helpers\Html;
             </span>
             <span title="<?= \Yii::t('goal', 'To Be Done At' ) ?> <?= strip_tags(\Yii::$app->formatter->asDate($goal->to_be_done_at)) ?>">
                 <span class="glyphicon glyphicon-calendar"></span>
-                <?= \Yii::$app->formatter->asRelativeTime($goal->to_be_done_at) ?>
+                <?= \Yii::$app->formatter->asRelativeTimeHighlight($goal->to_be_done_at) ?>
             </span>
         </nobr>
 
