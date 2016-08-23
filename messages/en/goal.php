@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Alias' => '',
     'Create Goal' => '',
     'Created At' => '',
     'Description' => '',
@@ -24,6 +25,7 @@ return [
     'Goal' => '',
     'Goals' => '',
     'ID' => '',
+    'Icon' => '',
     'Percent' => '',
     'Priority' => '',
     'Smart Achievable' => 'Achievable',

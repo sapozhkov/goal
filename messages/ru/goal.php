@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Alias' => 'Псевдоним',
     'Create Goal' => 'Создать Цель',
     'Created At' => 'Создано',
     'Description' => 'Описание',
@@ -24,6 +25,7 @@ return [
     'Goal' => 'Цель',
     'Goals' => 'Цели',
     'ID' => '',
+    'Icon' => 'Иконка',
     'Percent' => 'Процент выполнения',
     'Priority' => 'Приоритет',
     'Smart Achievable' => 'Достижимый',

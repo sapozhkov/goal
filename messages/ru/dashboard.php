@@ -17,12 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    '<< Closed >>' => '',
-    '<< Opened >>' => '',
-    'Create Type' => '',
-    'ID' => '',
-    'Title' => '',
-    'Type' => '',
-    'Types' => '',
-    'Weight' => '',
+    'Goals No Date' => 'Цели Без Даты',
+    'Nearest Goals' => 'Ближайшие Цели',
+    'Nearest Tasks' => 'Ближайшие Задачи',
+    'Overdue Goals' => 'Просроченные Цели',
+    'Overdue Tasks' => 'Просроченные Здаачи',
+    'Tasks No Date' => 'Задачи Без Даты',
+    'Total' => 'Всего',
 ];

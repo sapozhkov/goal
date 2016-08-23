@@ -17,6 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    '<< Closed >>' => '<< Закрыто >>',
+    '<< Opened >>' => '<< Открыто >>',
     'Create Type' => 'Создать Тип',
     'ID' => '',
     'Title' => 'Название',

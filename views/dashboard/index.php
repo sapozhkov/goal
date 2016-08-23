@@ -20,7 +20,7 @@ use yii\helpers\Url;
 
     <? if ($tasksOverdueCount): ?>
         <div class="col-sm-3 col-xs-12">
-            <h2>Overdue Tasks <span title="Total" class="label label-danger"><?= $tasksOverdueCount ?></span></h2>
+            <h2><?= \Yii::t('dashboard', 'Overdue Tasks') ?> <span title="<?= \Yii::t('dashboard', 'Total') ?>" class="label label-danger"><?= $tasksOverdueCount ?></span></h2>
             <? foreach ($tasksOverdue as $task): ?>
                 <?= $this->render('/task/list-item', [
                     'task' => $task,
@@ -33,7 +33,7 @@ use yii\helpers\Url;
 
     <? if ($tasksWithoutDateCount): ?>
         <div class="col-sm-3 col-xs-12">
-            <h2>Tasks No Date <span title="Total" class="label label-danger"><?= $tasksWithoutDateCount ?></span></h2>
+            <h2><?= \Yii::t('dashboard', 'Tasks No Date') ?> <span title="<?= \Yii::t('dashboard', 'Total') ?>" class="label label-danger"><?= $tasksWithoutDateCount ?></span></h2>
             <? foreach ($tasksWithoutDate as $task): ?>
                 <?= $this->render('/task/list-item', [
                     'task' => $task,
@@ -45,7 +45,7 @@ use yii\helpers\Url;
 
     <? if ($goalsOverdueCount): ?>
         <div class="col-sm-3 col-xs-12">
-            <h2>Overdue Goals <span title="Total" class="label label-danger"><?= $goalsOverdueCount ?></span></h2>
+            <h2><?= \Yii::t('dashboard', 'Overdue Goals') ?> <span title="<?= \Yii::t('dashboard', 'Total') ?>" class="label label-danger"><?= $goalsOverdueCount ?></span></h2>
             <? foreach ($goalsOverdue as $goal): ?>
                 <?= $this->render('/goal/list-item', [
                     'goal' => $goal,
@@ -56,7 +56,7 @@ use yii\helpers\Url;
 
     <? if ($goalsWithoutDateCount): ?>
         <div class="col-sm-3 col-xs-12">
-            <h2>Goals No Date <span title="Total" class="label label-danger"><?= $goalsWithoutDateCount ?></span></h2>
+            <h2><?= \Yii::t('dashboard', 'Goals No Date') ?> <span title="<?= \Yii::t('dashboard', 'Total') ?>" class="label label-danger"><?= $goalsWithoutDateCount ?></span></h2>
             <? foreach ($goalsWithoutDate as $goal): ?>
                 <?= $this->render('/goal/list-item', [
                     'goal' => $goal,
@@ -70,7 +70,7 @@ use yii\helpers\Url;
 <div class="row">
 
     <div class="col-sm-9 col-xs-12">
-        <h2>Nearest Tasks <span title="Total" class="label label-primary"><?= $tasksCount ?></span></h2>
+        <h2><?= \Yii::t('dashboard', 'Nearest Tasks') ?> <span title="<?= \Yii::t('dashboard', 'Total') ?>" class="label label-primary"><?= $tasksCount ?></span></h2>
         <? foreach ($tasks as $task): ?>
             <?= $this->render('/task/list-item', [
                 'task' => $task,
@@ -80,7 +80,7 @@ use yii\helpers\Url;
     </div>
 
     <div class="col-sm-3 col-xs-12">
-        <h2>Nearest Goals <?= Html::a($goalsCount, Url::to('/goal/index'), ['class' => 'label label-primary']) ?></h2>
+        <h2><?= \Yii::t('dashboard', 'Nearest Goals') ?> <?= Html::a($goalsCount, Url::to('/goal/index'), ['class' => 'label label-primary']) ?></h2>
         <? foreach ($goals as $goal): ?>
             <?= $this->render('/goal/list-item', [
                 'goal' => $goal,
