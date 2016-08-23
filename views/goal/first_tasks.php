@@ -6,14 +6,21 @@ use yii\helpers\Html;
 
 /* @var $taskRows Task[] */
 /* @var $goal Goal */
+/* @var $taskCount int */
 
 ?>
 
 <a name="tasks"></a>
-<h2><?= Html::a(Yii::t('task', 'Tasks'), $goal->urlTaskList()); ?></h2>
-<p>
+<h2>
+    <?= Html::a(
+        sprintf(
+            '%s <span class="label label-primary">%d</span>',
+            Yii::t('task', 'Tasks'),
+            $taskCount
+        ),
+        $goal->urlTaskList()); ?>
     <?= Html::a(Yii::t('task', 'Create Task'), ['task/create', 'goal_id' => $goal->id], ['class' => 'btn btn-success']) ?>
-</p>
+</h2>
 
 <? foreach ($taskRows as $task): ?>
     <p>

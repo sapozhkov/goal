@@ -73,20 +73,22 @@ class GoalController extends Controller
             ->all()
         ;
 
-        $taskRows = Task::find()
+        $taskQuery = Task::find()
             ->where([
                 'goal_id' => $id,
                 'closed' => 0
             ])
             ->orderBy('date')
             ->limit(5)
-            ->all()
         ;
+        $taskRows = $taskQuery->all();
+        $taskCount = $taskQuery->count();
 
         return $this->render('view', [
             'goal' => $goal,
             'logRows' => $logRows,
             'taskRows' => $taskRows,
+            'taskCount' => $taskCount,
             'logModel' => new Log(['goal_id' => $id])
         ]);
     }

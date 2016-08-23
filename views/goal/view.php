@@ -8,6 +8,7 @@ use yii\helpers\Html;
 /* @var $logRows app\models\Log[] */
 /* @var $taskRows app\models\Task[] */
 /* @var $logModel app\models\Log */
+/* @var $taskCount int */
 
 $this->title = $goal->title;
 $this->params['breadcrumbs'][] = $this->title;
@@ -123,6 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('first_tasks', [
         'taskRows' => $taskRows,
+        'taskCount' => $taskCount,
         'goal' => $goal
     ]) ?>
 
