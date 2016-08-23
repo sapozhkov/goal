@@ -11,11 +11,13 @@ use yii\widgets\ActiveForm;
 <div class="task-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => [''],
         'method' => 'get',
     ]); ?>
-    
-    <?= Html::hiddenInput('TaskSearch[goal_id]', $model->goal_id) ?>
+
+    <? if ($model->goal_id): ?>
+        <?= Html::hiddenInput('TaskSearch[goal_id]', $model->goal_id) ?>
+    <? endif; ?>
 
     <?= $form->field($model, 'title') ?>
 

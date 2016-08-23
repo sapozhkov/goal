@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+use app\models\Task;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -70,7 +71,10 @@ use yii\helpers\Url;
 <div class="row">
 
     <div class="col-sm-9 col-xs-12">
-        <h2><?= \Yii::t('dashboard', 'Nearest Tasks') ?> <span title="<?= \Yii::t('dashboard', 'Total') ?>" class="label label-primary"><?= $tasksCount ?></span></h2>
+        <h2>
+            <?= \Yii::t('dashboard', 'Nearest Tasks') ?>
+            <?= Html::a($tasksCount, Task::urlToAll(), ['class' => 'label label-primary']) ?>
+        </h2>
         <? foreach ($tasks as $task): ?>
             <?= $this->render('/task/list-item', [
                 'task' => $task,

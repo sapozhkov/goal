@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use app\models\Task;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -41,6 +42,7 @@ AppAsset::register($this);
             :
             [
                 ['label' => \Yii::t('goal', 'Goals'), 'url' => ['/goal/index']],
+                ['label' => \Yii::t('task', 'Tasks'), 'url' => Task::urlToAll()],
                 ['label' => \Yii::t('status', 'Statuses'), 'url' => ['/settings/status/index']],
                 ['label' => \Yii::t('type', 'Types'), 'url' => ['/settings/type/index']],
                 ['label' => \Yii::t('priority', 'Priorities'), 'url' => ['/settings/priority/index']],

@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "task".
@@ -28,6 +29,14 @@ class Task extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'task';
+    }
+
+    /**
+     * Return url to all tasks
+     * @return string
+     */
+    public static function urlToAll() {
+        return Url::to(['/task/all', 'TaskSearch[closed]'=>0]);
     }
 
     /**

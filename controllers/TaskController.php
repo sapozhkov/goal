@@ -29,6 +29,20 @@ class TaskController extends Controller
     }
 
     /**
+     * Shows all task by all goals
+     * @return mixed
+     */
+    public function actionAll() {
+        $searchModel = new TaskSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('all', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
      * Lists all Task models.
      * @return mixed
      * @throws UserException
