@@ -18,8 +18,8 @@
  */
 return [
     'Goals No Date' => 'Цели Без Даты',
-    'Nearest Goals' => 'Ближайшие Цели',
-    'Nearest Tasks' => 'Ближайшие Задачи',
+    'Nearest Goals' => 'Цели',
+    'Nearest Tasks' => 'Задачи',
     'Overdue Goals' => 'Просроченные Цели',
     'Overdue Tasks' => 'Просроченные Здаачи',
     'Tasks No Date' => 'Задачи Без Даты',
