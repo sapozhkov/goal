@@ -112,3 +112,7 @@ a.desc:after {
     margin-left: 11px;
     float: left;
 }
+
+ul, ol {
+    padding-left: 30px;
+}
