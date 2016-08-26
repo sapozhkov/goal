@@ -20,8 +20,10 @@ class DashboardController extends \yii\web\Controller
 
         // tasks without date
         $tasksWithoutDateQuery = Task::find()
-            ->where(['closed' => 0])
-            ->andWhere('date is NULL')
+            ->where([
+                'closed' => 0,
+                'date' => null
+            ])
             ->orderBy('id')
             ->limit(10)
         ;
@@ -54,8 +56,10 @@ class DashboardController extends \yii\web\Controller
         // goals without date
         $goalsWithoutDateQuery = Goal::find()
             ->innerJoinWith('status')
-            ->where('status.closed=0')
-            ->andWhere('to_be_done_at is NULL')
+            ->where([
+                'status.closed' => 0,
+                'to_be_done_at' => null
+            ])
             ->orderBy('goal.id')
             ->limit(10)
         ;
