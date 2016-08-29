@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = Yii::t('task', 'Tasks');
                 function ($task, $key, $index, $widget) {
                     return $this->render('list-item', [
                         'task' => $task,
+                        'showDeleteBtn' => true
                     ]);
                 },
         ]) ?>

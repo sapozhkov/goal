@@ -107,10 +107,19 @@ a.desc:after {
     margin-left: 40px;
 }
 
+.task-list-content-shift-right {
+    margin-right: 25px;
+}
+
 .task-list-icon {
     font-size: 18px;
     margin-left: 11px;
     float: left;
+}
+
+.task-list-delete-container {
+    margin-right: 11px;
+    float: right;
 }
 
 ul, ol {
