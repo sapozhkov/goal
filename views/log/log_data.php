@@ -42,6 +42,15 @@ if ( $data ) {
                     );
                     break;
 
+                case 'to_be_done_at':
+                    $rows[] = sprintf(
+                        '<strong>%s</strong>: "%s" -> "%s"',
+                        $fieldLabel,
+                        \Yii::$app->formatter->asDate($fieldData[0]),
+                        \Yii::$app->formatter->asDate($fieldData[1])
+                    );
+                    break;
+
                 case 'status_id':
                     $oldStatus = Status::findOne($fieldData[0]);
                     $newStatus = Status::findOne($fieldData[1]);
