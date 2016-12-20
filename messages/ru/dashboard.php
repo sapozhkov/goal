@@ -21,8 +21,9 @@ return [
     'Goals No Date' => 'Цели Без Даты',
     'Nearest Goals' => 'Цели',
     'Nearest Tasks' => 'Задачи',
+    'Overdue for {0} at {1}' => 'Просроченное для {0} на {1}',
     'Overdue Goals' => 'Просроченные Цели',
-    'Overdue Tasks' => 'Просроченные Здаачи',
+    'Overdue Tasks' => 'Просроченные Здачи',
     'Tasks No Date' => 'Задачи Без Даты',
     'Total' => 'Всего',
 ];

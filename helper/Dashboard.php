@@ -20,7 +20,7 @@ class Dashboard {
 
         $query = Task::find()
             ->where(['closed' => 0])
-            ->andWhere('date < DATE(NOW())')
+            ->andWhere('date <= DATE(NOW())')
             ->orderBy('date')
             ->limit(10)
         ;
@@ -129,7 +129,7 @@ class Dashboard {
         $query = Goal::find()
             ->innerJoinWith('status')
             ->where('status.closed=0')
-            ->andWhere('to_be_done_at < DATE(NOW())')
+            ->andWhere('to_be_done_at <= DATE(NOW())')
             ->orderBy('goal.id')
             ->limit(10)
         ;
