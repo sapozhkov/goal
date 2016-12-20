@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Dashboard' => '',
     'Goals No Date' => '',
     'Nearest Goals' => '',
     'Nearest Tasks' => '',

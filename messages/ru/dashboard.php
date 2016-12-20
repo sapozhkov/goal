@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Dashboard' => 'Панель управления',
     'Goals No Date' => 'Цели Без Даты',
     'Nearest Goals' => 'Цели',
     'Nearest Tasks' => 'Задачи',

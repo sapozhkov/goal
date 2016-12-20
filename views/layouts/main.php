@@ -41,7 +41,7 @@ AppAsset::register($this);
             ]
             :
             [
-                ['label' => \Yii::t('goal', 'Goals'), 'url' => ['/goal/index']],
+                ['label' => \Yii::t('dashboard', 'Dashboard'), 'url' => ['/dashboard/index']],
                 ['label' => \Yii::t('task', 'Tasks'), 'url' => Task::urlToAll()],
                 ['label' => \Yii::t('status', 'Statuses'), 'url' => ['/settings/status/index']],
                 ['label' => \Yii::t('type', 'Types'), 'url' => ['/settings/type/index']],
