@@ -30,7 +30,7 @@ return \yii\helpers\ArrayHelper::merge([
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => true,
-            'scriptUrl' => \yii\helpers\ArrayHelper::getValue($params, 'domain'),
+            'scriptUrl' => 'http://'.\yii\helpers\ArrayHelper::getValue($params, 'domain'),
             'rules' => [
                 '/<alias:[\w-_]+>' => 'goal/view',
             ]
