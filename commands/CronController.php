@@ -17,8 +17,8 @@ class CronController extends Controller
     public function actionIndex()
     {
 
-        $goals = Dashboard::getGoalsOverdue();
-        $tasks = Dashboard::getTasksOverdue();
+        $goals = Dashboard::getGoalsOverdue($goalsCount);
+        $tasks = Dashboard::getTasksOverdue($tasksCount);
 
         if ( $goals or $tasks ) {
 
@@ -30,12 +30,19 @@ class CronController extends Controller
                 'goals' => $goals
             ]);
 
+            $html = \Yii::$app->view->render('/dashboard/email.html.php', [
+                'tasks' => $tasks,
+                'goals' => $goals,
+                'goalsCount' => $goalsCount,
+                'tasksCount' => $tasksCount,
+            ]);
+
             \Yii::$app->mailer->compose()
                 ->setFrom('noreplay@'.$domain)
                 ->setTo($email)
                 ->setSubject(\Yii::t('dashboard', 'Overdue for {0} at {1}', [$domain, date('Y.m.d')]))
                 ->setTextBody($text)
-                //->setHtmlBody()
+                ->setHtmlBody($html)
                 ->send();
 
         }

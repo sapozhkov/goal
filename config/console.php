@@ -26,6 +26,18 @@ return \yii\helpers\ArrayHelper::merge([
                 ],
             ),
         ),
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => true,
+            'scriptUrl' => \yii\helpers\ArrayHelper::getValue($params, 'domain'),
+            'rules' => [
+                '/<alias:[\w-_]+>' => 'goal/view',
+            ]
+        ],
+        'formatter' => [
+            'class' => 'app\helper\Formatter'
+        ],
         'log' => [
             'targets' => [
                 [
