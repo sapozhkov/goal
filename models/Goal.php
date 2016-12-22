@@ -166,4 +166,12 @@ class Goal extends \yii\db\ActiveRecord
         return Url::to(['task/index', 'sort'=> 'date', 'TaskSearch[goal_id]' => $this->id, 'TaskSearch[closed]' => 0]);
     }
 
+    /**
+     * Url to counters list for goal
+     * @return string
+     */
+    public function urlCounterList() {
+        return Url::to(['counter/index', 'sort'=> 'title', 'CounterSearch[goal_id]' => $this->id]);
+    }
+
 }
