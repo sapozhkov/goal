@@ -16,7 +16,7 @@ class CounterSearch extends Counter
     public function rules()
     {
         return [
-            [['id', 'goal_id', 'type'], 'integer'],
+            [['id', 'goal_id'], 'integer'],
             [['title', 'description'], 'safe'],
         ];
     }
@@ -59,7 +59,6 @@ class CounterSearch extends Counter
         $query->andFilterWhere([
             'id' => $this->id,
             'goal_id' => $this->goal_id,
-            'type' => $this->type,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

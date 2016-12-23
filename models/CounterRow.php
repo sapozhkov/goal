@@ -33,7 +33,7 @@ class CounterRow extends \yii\db\ActiveRecord
     {
         return [
             [['counter_id'], 'integer'],
-            [['value'], 'integer'], // todo + float
+            [['value'], 'integer'],
             [['counter_id'], 'required'],
             [['time'], 'safe'],
             [['description'], 'string'],

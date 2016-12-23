@@ -10,7 +10,6 @@ use Yii;
  * @property integer $id
  * @property integer $goal_id
  * @property string $title
- * @property integer $type
  * @property string $description
  *
  * @property Goal $goal
@@ -32,8 +31,8 @@ class Counter extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['goal_id', 'type'], 'integer'],
-            [['title', 'type'], 'required'],
+            [['goal_id'], 'integer'],
+            [['title'], 'required'],
             [['description'], 'string'],
             [['title'], 'string', 'max' => 256],
             [['goal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Goal::className(), 'targetAttribute' => ['goal_id' => 'id']],
@@ -49,7 +48,6 @@ class Counter extends \yii\db\ActiveRecord
             'id' => Yii::t('counnter', 'ID'),
             'goal_id' => Yii::t('counnter', 'Goal ID'),
             'title' => Yii::t('counnter', 'Title'),
-            'type' => Yii::t('counnter', 'Type'),
             'description' => Yii::t('counnter', 'Description'),
         ];
     }

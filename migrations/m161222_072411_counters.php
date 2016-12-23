@@ -11,7 +11,6 @@ class m161222_072411_counters extends Migration
             'id' => $this->primaryKey(),
             'goal_id' => $this->integer()->notNull(),
             'title' => $this->string()->notNull(),
-            'type' => $this->integer()->notNull(),
             'description' => $this->text()->notNull(),
         ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
@@ -21,7 +20,7 @@ class m161222_072411_counters extends Migration
             'id' => $this->primaryKey(),
             'counter_id' => $this->integer()->notNull(),
             'time' => $this->dateTime()->notNull(),
-            'value' => $this->float()->notNull(),
+            'value' => $this->integer()->notNull(),
             'description' => $this->text()->notNull(),
         ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 

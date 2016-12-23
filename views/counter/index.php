@@ -25,8 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'title',
-            'type',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
