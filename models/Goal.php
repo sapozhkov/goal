@@ -35,6 +35,7 @@ use yii\helpers\Url;
  * @property Priority $priority
  * @property Status $status
  * @property Log[] $logs
+ * @property Counter[] $counters
  */
 class Goal extends \yii\db\ActiveRecord
 {
@@ -135,6 +136,14 @@ class Goal extends \yii\db\ActiveRecord
     public function getLogs()
     {
         return $this->hasMany(Log::className(), ['goal_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCounters()
+    {
+        return $this->hasMany(Counter::className(), ['goal_id' => 'id']);
     }
 
     /*

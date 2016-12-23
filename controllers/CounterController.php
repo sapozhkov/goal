@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\CounterRow;
 use app\models\Goal;
 use Yii;
 use app\models\Counter;
@@ -141,4 +142,28 @@ class CounterController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionAdd() {
+
+        $model = new CounterRow([
+        ]);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            var_dump( 1 );
+
+//            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+
+            var_dump( $model->errors );
+
+            var_dump( 0 );
+//            return $this->render('update', [
+//                'model' => $model,
+//            ]);
+        }
+
+
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "counter_row".
@@ -10,7 +11,7 @@ use Yii;
  * @property integer $id
  * @property integer $counter_id
  * @property string $time
- * @property integer $value
+ * @property float $value
  * @property string $description
  *
  * @property Counter $counter
@@ -31,13 +32,30 @@ class CounterRow extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['counter_id', 'value'], 'integer'],
-            [['time', 'description'], 'required'],
+            [['counter_id'], 'integer'],
+            [['value'], 'integer'], // todo + float
+            [['counter_id'], 'required'],
             [['time'], 'safe'],
             [['description'], 'string'],
-            [['counter_id'], 'exist', 'skipOnError' => true, 'targetClass' => Counter::className(), 'targetAttribute' => ['counter_id' => 'id']],
+            [['counter_id'], 'exist', 'skipOnError' => false, 'targetClass' => Counter::className(), 'targetAttribute' => ['counter_id' => 'id']],
         ];
     }
+
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    self::EVENT_BEFORE_INSERT => 'time',
+                ],
+                'value' => function () {
+                    return date('c', time() - date('Z'));
+                },
+            ],
+        ];
+    }
+
 
     /**
      * @inheritdoc

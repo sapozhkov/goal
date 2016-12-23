@@ -128,6 +128,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'goal' => $goal
     ]) ?>
 
+    <?= $this->render('counters', [
+        'goal' => $goal
+    ]) ?>
+
     <?= $this->render('last_log_rows', [
         'logRows' => $logRows,
         'logModel' => $logModel,
