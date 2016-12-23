@@ -20,6 +20,8 @@ $counterModel = new \app\models\CounterRow();
 
         <?= Html::a(Html::encode($counter->title), ['counter/view', 'id' => $counter->id]) ?>
 
+        - <?= $counter->sum ?>
+
         <?= Html::hiddenInput('CounterRow[counter_id]', $counter->id) ?>
 
         <?= $form->field($counterModel, 'value')->textInput() ?>

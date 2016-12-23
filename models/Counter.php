@@ -11,6 +11,7 @@ use Yii;
  * @property integer $goal_id
  * @property string $title
  * @property string $description
+ * @property int sum total sum of all CounterRow.values
  *
  * @property Goal $goal
  * @property CounterRow[] $counterRows
@@ -45,10 +46,10 @@ class Counter extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('counnter', 'ID'),
-            'goal_id' => Yii::t('counnter', 'Goal ID'),
-            'title' => Yii::t('counnter', 'Title'),
-            'description' => Yii::t('counnter', 'Description'),
+            'id' => Yii::t('counter', 'ID'),
+            'goal_id' => Yii::t('counter', 'Goal ID'),
+            'title' => Yii::t('counter', 'Title'),
+            'description' => Yii::t('counter', 'Description'),
         ];
     }
 
@@ -66,5 +67,20 @@ class Counter extends \yii\db\ActiveRecord
     public function getCounterRows()
     {
         return $this->hasMany(CounterRow::className(), ['counter_id' => 'id']);
+    }
+
+    /**
+     * Returns total sum of all CounterRow.values
+     * @return int
+     */
+    public function getSum() {
+        $r = CounterRow::find()
+            ->select(['sum' => 'SUM(value)'])
+            ->where(['counter_id' => $this->id])
+            ->asArray()
+            ->one()
+        ;
+        return $r ? (int)$r['sum'] : 0;
+
     }
 }

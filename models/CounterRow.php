@@ -11,7 +11,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $id
  * @property integer $counter_id
  * @property string $time
- * @property float $value
+ * @property int $value
  * @property string $description
  *
  * @property Counter $counter
@@ -32,9 +32,8 @@ class CounterRow extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['counter_id'], 'integer'],
-            [['value'], 'integer'],
-            [['counter_id'], 'required'],
+            [['counter_id', 'value'], 'integer'],
+            [['counter_id', 'value'], 'required'],
             [['time'], 'safe'],
             [['description'], 'string'],
             [['counter_id'], 'exist', 'skipOnError' => false, 'targetClass' => Counter::className(), 'targetAttribute' => ['counter_id' => 'id']],
@@ -63,11 +62,11 @@ class CounterRow extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('counnter', 'ID'),
-            'counter_id' => Yii::t('counnter', 'Counter ID'),
-            'time' => Yii::t('counnter', 'Time'),
-            'value' => Yii::t('counnter', 'Value'),
-            'description' => Yii::t('counnter', 'Description'),
+            'id' => Yii::t('counter', 'ID'),
+            'counter_id' => Yii::t('counter', 'Counter ID'),
+            'time' => Yii::t('counter', 'Time'),
+            'value' => Yii::t('counter', 'Value'),
+            'description' => Yii::t('counter', 'Description'),
         ];
     }
 

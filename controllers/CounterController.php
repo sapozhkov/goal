@@ -35,6 +35,7 @@ class CounterController extends Controller
     /**
      * Lists all Counter models.
      * @return mixed
+     * @throws UserException
      */
     public function actionIndex()
     {
@@ -70,6 +71,7 @@ class CounterController extends Controller
      * Creates a new Counter model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
+     * @throws UserException
      */
     public function actionCreate()
     {
@@ -143,24 +145,18 @@ class CounterController extends Controller
         }
     }
 
+    /*
+     * Add
+     * @return Response
+     */
     public function actionAdd() {
 
         $model = new CounterRow([
         ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            var_dump( 1 );
-
-//            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect($model->counter->goal->url(['#' => 'counters']));
         } else {
-
-            var_dump( $model->errors );
-
-            var_dump( 0 );
-//            return $this->render('update', [
-//                'model' => $model,
-//            ]);
         }
 
 
