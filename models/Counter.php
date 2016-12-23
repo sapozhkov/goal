@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "counter".
@@ -83,4 +84,22 @@ class Counter extends \yii\db\ActiveRecord
         return $r ? (int)$r['sum'] : 0;
 
     }
+
+
+    /**
+     * Url to counter
+     * @return string
+     */
+    public function url() {
+        return Url::to(['counter/view', 'id' => $this->id]);
+    }
+
+    /**
+     * Url to counter log list
+     * @return string
+     */
+    public function urlToLog() {
+        return Url::to(['counter-row/index', 'sort'=> '-date', 'CounterRowSearch[counter_id]' => $this->id]);
+    }
+
 }

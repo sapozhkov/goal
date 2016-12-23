@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Counter;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Counter */
@@ -34,6 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'goal_id',
             'title',
+            [
+                'attribute'=>'sum',
+                'format'=>'html',
+                'value'=>function(Counter $counter){
+                    return Html::a($counter->sum, $counter->urlToLog());
+                },
+            ],
             'description:ntext',
         ],
     ]) ?>

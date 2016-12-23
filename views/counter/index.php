@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Counter;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CounterSearch */
@@ -25,6 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'title',
+            [
+                'attribute'=>'sum',
+                'format'=>'html',
+                'value'=>function(Counter $counter){
+                    return Html::a($counter->sum, $counter->urlToLog());
+                },
+                //'filter' => '',
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
