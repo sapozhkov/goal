@@ -26,6 +26,7 @@ return [
     'Description' => '',
     'Goal ID' => '',
     'ID' => '',
+    'No counters' => '',
     'Time' => '',
     'Title' => '',
     'Value' => '',

@@ -99,7 +99,7 @@ class Counter extends \yii\db\ActiveRecord
      * @return string
      */
     public function urlToLog() {
-        return Url::to(['counter-row/index', 'sort'=> '-date', 'CounterRowSearch[counter_id]' => $this->id]);
+        return Url::to(['counter-row/index', 'sort'=> '-time', 'CounterRowSearch[counter_id]' => $this->id]);
     }
 
 }
