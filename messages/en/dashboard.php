@@ -23,6 +23,7 @@ return [
     'Nearest Tasks' => '',
     'Overdue Goals' => '',
     'Overdue Tasks' => '',
+    'Overdue for {0} at {1}' => '',
     'Tasks No Date' => '',
     'Total' => '',
 ];

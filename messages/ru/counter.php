@@ -17,13 +17,16 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Dashboard' => 'Панель управления',
-    'Goals No Date' => 'Цели Без Даты',
-    'Nearest Goals' => 'Цели',
-    'Nearest Tasks' => 'Задачи',
-    'Overdue Goals' => 'Просроченные Цели',
-    'Overdue Tasks' => 'Просроченные Здачи',
-    'Overdue for {0} at {1}' => 'Просроченное для {0} на {1}',
-    'Tasks No Date' => 'Задачи Без Даты',
-    'Total' => 'Всего',
+    'Add' => 'Добавить',
+    'Counter ID' => 'ID Счетчика',
+    'Counter Rows' => 'Записи счетчика',
+    'Counters' => 'Счетчики',
+    'Create Counter' => 'Создать счетчик',
+    'Create Counter Row' => 'Создать запись счетчика',
+    'Description' => 'Описание',
+    'Goal ID' => 'ID Цели',
+    'ID' => '',
+    'Time' => 'Время',
+    'Title' => 'Заголовок',
+    'Value' => 'Значение',
 ];
