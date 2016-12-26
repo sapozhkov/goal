@@ -23,6 +23,7 @@ return [
     'Counters' => '',
     'Create Counter' => '',
     'Create Counter Row' => '',
+    'Default' => '',
     'Description' => '',
     'Goal ID' => '',
     'ID' => '',

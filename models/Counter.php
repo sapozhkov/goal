@@ -12,6 +12,7 @@ use yii\helpers\Url;
  * @property integer $goal_id
  * @property string $title
  * @property string $description
+ * @property integer $default
  * @property int sum total sum of all CounterRow.values
  *
  * @property Goal $goal
@@ -33,11 +34,11 @@ class Counter extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['goal_id'], 'integer'],
+            [['goal_id', 'default'], 'integer'],
             [['title'], 'required'],
             [['description'], 'string'],
             [['title'], 'string', 'max' => 256],
-            [['goal_id'], 'exist', 'skipOnError' => true, 'targetClass' => Goal::className(), 'targetAttribute' => ['goal_id' => 'id']],
+            [['goal_id'], 'exist', 'skipOnError' => false, 'targetClass' => Goal::className(), 'targetAttribute' => ['goal_id' => 'id']],
         ];
     }
 
@@ -51,6 +52,7 @@ class Counter extends \yii\db\ActiveRecord
             'goal_id' => Yii::t('counter', 'Goal ID'),
             'title' => Yii::t('counter', 'Title'),
             'description' => Yii::t('counter', 'Description'),
+            'default' => Yii::t('counter', 'Default'),
         ];
     }
 

@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'goal_id',
             'title',
+            'default',
             [
                 'attribute'=>'sum',
                 'format'=>'html',

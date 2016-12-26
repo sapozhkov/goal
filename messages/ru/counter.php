@@ -23,6 +23,7 @@ return [
     'Counters' => 'Счетчики',
     'Create Counter' => 'Создать счетчик',
     'Create Counter Row' => 'Создать запись счетчика',
+    'Default' => 'По умолчанию',
     'Description' => 'Описание',
     'Goal ID' => 'ID Цели',
     'ID' => '',
