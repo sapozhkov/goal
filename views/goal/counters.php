@@ -20,8 +20,7 @@ $counterModel = new \app\models\CounterRow();
         <?= Html::hiddenInput('CounterRow[counter_id]', $counter->id) ?>
 
         <h3>
-            <?= Html::a(Html::encode($counter->title), ['counter/view', 'id' => $counter->id]) ?>
-            <span class="label label-primary"><?= $counter->sum ?></span>
+            <?= Html::a(Html::encode($counter->title).' <span class="label label-primary">'.$counter->sum.'</span>', $counter->urlToLog()) ?>
         </h3>
 
         <div class="row">
