@@ -53,7 +53,7 @@ class GoalController extends Controller
     public function actionView($alias)
     {
 
-        $goal = $this->findModel(['alias' => $alias]);
+        $goal = $this->findModel($alias);
         $id = $goal->id;
 
         $logRows = Log::find()
@@ -69,10 +69,9 @@ class GoalController extends Controller
                 'closed' => 0
             ])
             ->orderBy('date')
-            ->limit(5)
         ;
-        $taskRows = $taskQuery->all();
         $taskCount = $taskQuery->count();
+        $taskRows = $taskQuery->limit(5)->all();
 
         return $this->render('view', [
             'goal' => $goal,
