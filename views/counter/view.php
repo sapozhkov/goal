@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use app\models\Counter;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Counter */
@@ -19,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?= Html::a(Yii::t('counter', 'Records'), $model->urlToLog(), ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -39,11 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'sum',
                 'format'=>'html',
-                'value'=>function(Counter $counter){
-                    return Html::a($counter->sum, $counter->urlToLog());
-                },
+                'value'=> Html::a($model->sum, $model->urlToLog())
             ],
-            'description:ntext',
+            'description:wiki',
         ],
     ]) ?>
 

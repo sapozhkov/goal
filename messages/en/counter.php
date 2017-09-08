@@ -28,6 +28,8 @@ return [
     'Goal ID' => '',
     'ID' => '',
     'No counters' => '',
+    'Records' => '',
+    'Settings' => '',
     'Time' => '',
     'Title' => '',
     'Value' => '',

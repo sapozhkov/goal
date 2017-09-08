@@ -25,16 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'title',
-            'default',
             [
-                'attribute'=>'sum',
+                'attribute'=>'title',
                 'format'=>'html',
                 'value'=>function(Counter $counter){
-                    return Html::a($counter->sum, $counter->urlToLog());
+                    return Html::a($counter->title, $counter->urlToLog());
                 },
                 //'filter' => '',
             ],
+            'sum',
+            'default',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

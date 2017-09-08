@@ -78,6 +78,9 @@ class CounterRowController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect($model->counter->urlToLog());
         } else {
+            // set default value
+            if ( !$model->value and $counter->default )
+                $model->value = $counter->default;
             return $this->render('create', [
                 'model' => $model,
             ]);

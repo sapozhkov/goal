@@ -18,10 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="counter-row-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= $this->title ?>: <?= Html::encode($counter->title) ?> [<?= $counter->sum ?>]</h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
+        <?= Html::a(Yii::t('counter', 'Settings'), $counter->url(), ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('counter', 'Create Counter Row'), ['create', 'counter_id' => $counter->id], ['class' => 'btn btn-success']) ?>
     </p>
 
