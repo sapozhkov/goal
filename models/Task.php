@@ -152,4 +152,13 @@ class Task extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Goal::className(), ['id' => 'goal_id']);
     }
+
+    /**
+     * Returns string url to task
+     * @return string
+     */
+    public function url() {
+        return Url::to(['task/update', 'id' => $this->id]);
+    }
+
 }

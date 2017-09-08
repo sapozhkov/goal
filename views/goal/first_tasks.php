@@ -29,6 +29,6 @@ use yii\helpers\Html;
             ['title' => Yii::t('task', 'Close')])
         ?>
         <strong><?= Yii::$app->formatter->asDatetime($task->date) ?></strong>
-        <?= nl2br(Html::encode($task->title)) ?>
+        <?= Html::a($task->title, $task->url()) ?>
     </p>
 <? endforeach; ?>
