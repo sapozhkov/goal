@@ -13,6 +13,14 @@ use yii\widgets\ActiveForm;
 <a name="log"></a>
 <h2><?= Html::a(\Yii::t('log', 'Logs'), $goal->urlLogList()); ?></h2>
 
+<? foreach ($logRows as $log): ?>
+<?= $this->render('/log/log_data', [
+    'log' => $log
+]) ?>
+<? endforeach; ?>
+
+<hr>
+
 <div class="message-form">
 
     <?php $form = ActiveForm::begin(['action' => ['goal/message']]); ?>
@@ -28,9 +36,3 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
-
-<? foreach ($logRows as $log): ?>
-<?= $this->render('/log/log_data', [
-    'log' => $log
-]) ?>
-<? endforeach; ?>
