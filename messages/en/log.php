@@ -22,6 +22,7 @@ return [
     'Field "{0}" updated' => '',
     'Goal ID' => '',
     'ID' => '',
+    'Last messages:' => '',
     'Logs' => '',
     'Message' => '',
     'Preview' => '',

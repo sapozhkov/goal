@@ -62,6 +62,7 @@ class GoalController extends Controller
             ->limit(5)
             ->all()
         ;
+        $logRows = array_reverse($logRows);
 
         $taskQuery = Task::find()
             ->where([
