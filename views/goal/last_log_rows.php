@@ -29,7 +29,7 @@ use yii\widgets\ActiveForm;
 
     <?= Html::hiddenInput('Log[goal_id]', $logModel->goal_id) ?>
 
-    <?= $form->field($logModel, 'message')->label(\Yii::t('goal', 'Write new message'))->textarea() ?>
+    <?= $form->field($logModel, 'message')->label(\Yii::t('goal', 'Write new message'))->textarea(['class' => 'form-control js_goal_message_field', 'rows'=>2]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('goal', 'Write'), ['class' => 'btn btn-success']) ?>

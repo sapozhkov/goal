@@ -7,5 +7,10 @@ $(function(){
         }
     });
 
+    $('.js_goal_message_field').focus(function () {
+        if ( $(this).attr('rows') == 2 )
+            $(this).attr('rows', 5);
+    })
+
 });
 
