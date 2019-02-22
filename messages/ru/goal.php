@@ -38,6 +38,6 @@ return [
     'To Be Done At' => 'Выполнить к',
     'Type' => 'Тип',
     'Updated At' => 'Обновлено',
-    'Write' => 'Напиать',
+    'Write' => 'Написать',
     'Write new message' => 'Написать новое сообщение',
 ];
