@@ -9,8 +9,12 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'version' => '0.82',
-    'language' => 'en',
+    'language' => 'ru',
     'defaultRoute' => 'goal/index',
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
     'modules' => [
         'settings' => [
             'class' => 'app\modules\settings\Module',
@@ -28,7 +32,7 @@ $config = [
             // раскоментить, если надо включить точное определение пути
             //'enableStrictParsing' => true,
             'rules' => [
-                '/<alias:[\w-_]+>' => 'goal/view',
+                '/<alias:[\w-]+>' => 'goal/view',
             ]
         ],
         'i18n' => array(

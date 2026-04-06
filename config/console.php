@@ -12,6 +12,10 @@ return \yii\helpers\ArrayHelper::merge([
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'gii'],
     'controllerNamespace' => 'app\commands',
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
     'modules' => [
         'gii' => 'yii\gii\Module',
     ],
@@ -32,7 +36,7 @@ return \yii\helpers\ArrayHelper::merge([
             'showScriptName' => true,
             'scriptUrl' => 'http://'.\yii\helpers\ArrayHelper::getValue($params, 'domain'),
             'rules' => [
-                '/<alias:[\w-_]+>' => 'goal/view',
+                '/<alias:[\w-]+>' => 'goal/view',
             ]
         ],
         'formatter' => [
