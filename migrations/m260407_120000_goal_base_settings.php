@@ -6,6 +6,18 @@ class m260407_120000_goal_base_settings extends Migration
 {
     public function safeUp()
     {
+        if (!$this->isTableEmpty('status')) {
+            return;
+        }
+
+        if (!$this->isTableEmpty('priority')) {
+            return;
+        }
+
+        if (!$this->isTableEmpty('type')) {
+            return;
+        }
+
         $this->insertRows('status', [
             ['id' => 1, 'title' => 'New', 'weight' => 1, 'closed' => 0],
             ['id' => 2, 'title' => 'Done', 'weight' => 2, 'closed' => 1],
@@ -46,5 +58,12 @@ class m260407_120000_goal_base_settings extends Migration
                 $this->insert($table, $row);
             }
         }
+    }
+
+    private function isTableEmpty($table)
+    {
+        return !(new \yii\db\Query())
+            ->from($table)
+            ->exists($this->db);
     }
 }
