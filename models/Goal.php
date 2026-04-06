@@ -6,7 +6,6 @@ use app\modules\settings\models\Priority;
 use app\modules\settings\models\Status;
 use app\modules\settings\models\Type;
 use Yii;
-use yii\behaviors\TimestampBehavior;
 use yii\helpers\Url;
 
 /**
@@ -62,23 +61,6 @@ class Goal extends \yii\db\ActiveRecord
             [['alias'], 'string', 'max' => 32]
         ];
     }
-
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    self::EVENT_BEFORE_UPDATE => 'updated_at',
-                ],
-                'value' => function () {
-                    return date('c', time() - date('Z'));
-                },
-            ],
-        ];
-    }
-
 
     /**
      * @inheritdoc
@@ -144,6 +126,24 @@ class Goal extends \yii\db\ActiveRecord
     public function getCounters()
     {
         return $this->hasMany(Counter::className(), ['goal_id' => 'id']);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+
+        if ($insert && !$this->created_at) {
+            $this->created_at = date('Y-m-d');
+        }
+
+        $this->updated_at = date('Y-m-d H:i:s');
+
+        return true;
     }
 
     /*

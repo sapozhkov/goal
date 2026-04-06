@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
 use yii\helpers\Url;
 
 /**
@@ -52,21 +51,6 @@ class Task extends \yii\db\ActiveRecord
         ];
     }
 
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => 'created_at',
-                ],
-                'value' => function () {
-                    return date('c', time() - date('Z'));
-                },
-            ],
-        ];
-    }
-
     /**
      * @inheritdoc
      */
@@ -90,14 +74,20 @@ class Task extends \yii\db\ActiveRecord
      */
     public function beforeSave($insert)
     {
-        if (parent::beforeSave($insert)) {
-            // change close date
-            if ( $this->isAttributeChanged('closed', false) and $this->closed )
-                $this->closed_at = date('c', time() - date('Z'));
-            return true;
-        } else {
+        if (!parent::beforeSave($insert)) {
             return false;
         }
+
+        if ($insert && !$this->created_at) {
+            $this->created_at = date('Y-m-d H:i:s');
+        }
+
+        // change close date
+        if ($this->isAttributeChanged('closed', false) and $this->closed) {
+            $this->closed_at = date('Y-m-d H:i:s');
+        }
+
+        return true;
     }
 
     /**

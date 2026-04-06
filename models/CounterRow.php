@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "counter_row".
@@ -40,22 +39,6 @@ class CounterRow extends \yii\db\ActiveRecord
         ];
     }
 
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => 'time',
-                ],
-                'value' => function () {
-                    return date('c', time() - date('Z'));
-                },
-            ],
-        ];
-    }
-
-
     /**
      * @inheritdoc
      */
@@ -76,5 +59,21 @@ class CounterRow extends \yii\db\ActiveRecord
     public function getCounter()
     {
         return $this->hasOne(Counter::className(), ['id' => 'counter_id']);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+
+        if ($insert && !$this->time) {
+            $this->time = date('Y-m-d H:i:s');
+        }
+
+        return true;
     }
 }

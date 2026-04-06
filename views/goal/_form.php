@@ -3,6 +3,7 @@
 use app\helper\Icon;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\widgets\ActiveForm;
 use app\models;
 use yii\jui\DatePicker;
@@ -10,6 +11,55 @@ use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Goal */
 /* @var $form yii\widgets\ActiveForm */
+
+$iconInputId = Html::getInputId($model, 'icon');
+$iconPickerId = $iconInputId . '-picker';
+$iconPreviewId = $iconInputId . '-preview';
+$iconToggleId = $iconInputId . '-toggle';
+$iconCollapseId = $iconInputId . '-collapse';
+$selectedIcon = (string)$model->icon;
+$iconOptions = Icon::getList();
+
+$this->registerJs("
+    (function () {
+        var picker = document.getElementById(" . Json::htmlEncode($iconPickerId) . ");
+        var input = document.getElementById(" . Json::htmlEncode($iconInputId) . ");
+        var preview = document.getElementById(" . Json::htmlEncode($iconPreviewId) . ");
+        var toggle = document.getElementById(" . Json::htmlEncode($iconToggleId) . ");
+
+        if (!picker || !input || !preview || !toggle) {
+            return;
+        }
+
+        function renderPreview(value) {
+            if (value) {
+                preview.innerHTML = '<span class=\"glyphicon glyphicon-' + value + '\"></span><span class=\"goal-icon-preview-label\">' + value + '</span>';
+            } else {
+                preview.innerHTML = '<span class=\"goal-icon-preview-empty\">" . Json::htmlEncode(Yii::t('app', 'Not set')) . "</span>';
+            }
+        }
+
+        picker.addEventListener('click', function (event) {
+            var option = event.target.closest('[data-icon-value]');
+            var options;
+
+            if (!option) {
+                return;
+            }
+
+            input.value = option.getAttribute('data-icon-value');
+            options = picker.querySelectorAll('[data-icon-value]');
+
+            Array.prototype.forEach.call(options, function (item) {
+                item.classList.toggle('active', item === option);
+            });
+
+            renderPreview(input.value);
+        });
+
+        renderPreview(input.value);
+    })();
+");
 ?>
 
 <div class="goal-form">
@@ -71,7 +121,37 @@ use yii\jui\DatePicker;
             </div>
 
             <div>
-                <?= $form->field($model, 'icon')->dropDownList([''=>''] + array_combine(Icon::getList(), Icon::getList())) ?>
+                <?= $form->field($model, 'icon')->hiddenInput()->label(Yii::t('goal', 'Icon')) ?>
+                <div class="goal-icon-panel">
+                    <div id="<?= Html::encode($iconPreviewId) ?>" class="goal-icon-preview"></div>
+                    <button type="button"
+                            id="<?= Html::encode($iconToggleId) ?>"
+                            class="btn btn-default btn-sm"
+                            data-toggle="collapse"
+                            data-target="#<?= Html::encode($iconCollapseId) ?>"
+                            aria-expanded="false"
+                            aria-controls="<?= Html::encode($iconCollapseId) ?>">
+                        <?= Yii::t('app', 'Update') ?> <?= Yii::t('goal', 'Icon') ?>
+                    </button>
+                </div>
+                <div id="<?= Html::encode($iconCollapseId) ?>" class="collapse">
+                    <div id="<?= Html::encode($iconPickerId) ?>" class="goal-icon-picker">
+                        <button type="button"
+                                class="goal-icon-picker-item <?= $selectedIcon === '' ? 'active' : '' ?>"
+                                data-icon-value=""
+                                title="<?= Html::encode(Yii::t('app', 'Not set')) ?>">
+                            <span class="goal-icon-picker-empty">&times;</span>
+                        </button>
+                        <? foreach ($iconOptions as $iconName): ?>
+                        <button type="button"
+                                class="goal-icon-picker-item <?= $selectedIcon === $iconName ? 'active' : '' ?>"
+                                data-icon-value="<?= Html::encode($iconName) ?>"
+                                title="<?= Html::encode($iconName) ?>">
+                            <?= Icon::getIconHtml($iconName) ?>
+                        </button>
+                        <? endforeach; ?>
+                    </div>
+                </div>
             </div>
 
         </div>
