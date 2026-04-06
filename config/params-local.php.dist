@@ -1,0 +1,6 @@
+<?php
+
+return [
+    'adminEmail' => getenv('APP_ADMIN_EMAIL') ?: 'admin@example.com',
+    'domain' => getenv('APP_DOMAIN') ?: 'localhost:8080',
+];

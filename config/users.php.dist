@@ -1,0 +1,11 @@
+<?php
+
+return [
+    100 => [
+        'id' => 100,
+        'username' => getenv('GOAL_APP_USERNAME') ?: 'demo',
+        'password' => getenv('GOAL_APP_PASSWORD') ?: 'demo',
+        'authKey' => 'test100key',
+        'accessToken' => '100-token',
+    ],
+];

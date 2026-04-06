@@ -1,0 +1,12 @@
+<?php
+
+return [
+    'components' => [
+        'request' => [
+            'cookieValidationKey' => getenv('APP_COOKIE_VALIDATION_KEY') ?: 'local-dev-cookie-key-change-me',
+        ],
+        'mailer' => [
+            'useFileTransport' => true,
+        ],
+    ],
+];

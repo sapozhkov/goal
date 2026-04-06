@@ -33,3 +33,5 @@ config/*-local.php
 public_html
 web/.htaccess
 web/cgi-bin/
+
+.env

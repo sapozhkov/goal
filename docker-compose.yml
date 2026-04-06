@@ -1,0 +1,50 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: goal-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_ENV: dev
+      APP_DEBUG: "1"
+      APP_DOMAIN: localhost:8080
+      APP_ADMIN_EMAIL: admin@example.com
+      APP_COOKIE_VALIDATION_KEY: local-dev-cookie-key-change-me
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: goal
+      DB_USERNAME: goal
+      DB_PASSWORD: goal
+      GOAL_APP_USERNAME: demo
+      GOAL_APP_PASSWORD: demo
+      COMPOSER_ALLOW_SUPERUSER: "1"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/app
+
+  db:
+    image: mariadb:10.6
+    container_name: goal-db
+    command: --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MARIADB_DATABASE: goal
+      MARIADB_USER: goal
+      MARIADB_PASSWORD: goal
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - "33060:3306"
+    volumes:
+      - goal-db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+volumes:
+  goal-db-data:
